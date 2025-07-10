@@ -9,20 +9,33 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
 
-    const user = useAuth();
-    console.log(user)
+    const {logoutUser,user} = useAuth();
+
+    const handleLogout = () => {
+        logoutUser()
+        .then(() => {
+            //logout
+        }).catch(error => {
+            console.log(error);
+        })
+    }
 
     const links = <>
         <li className='font-bold'><NavLink to="/">Home</NavLink></li>
         <li className='font-bold'><NavLink to="/biodatas">Biodatas</NavLink></li>
         <li className='font-bold'><NavLink to="/aboutUs">About Us</NavLink></li>
         <li>
-            <Link
+            {
+                user ? <button
+                onClick={handleLogout}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition cursor-pointer"
+                >LogOut</button>:<Link
                 to="/login"
                 className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
             >
                 Login
             </Link>
+            }
         </li>
     </>
 

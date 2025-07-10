@@ -1,8 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router';
+import useAuth from '../../hooks/useAuth';
+import SocialLogin from './SocialLogin';
 
 const LoginForm = () => {
+    const {loginUser} = useAuth();
+
     const {
         register,
         handleSubmit,
@@ -12,6 +16,12 @@ const LoginForm = () => {
     const onSubmit = (data) => {
         console.log("Registration Data:", data);
         // Send data to your backend or API here
+        loginUser(data.email, data.password)
+        .then(result => {
+            console.log(result);
+        }).catch(error => {
+            console.log(error)
+        })
     };
 
     return (
@@ -53,21 +63,10 @@ const LoginForm = () => {
                     type="submit"
                     className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
                 >
-                    Register
+                    Login
                 </button>
 
-                {/* google login */}
-                <button
-                    type="button"
-                    className="w-full flex items-center justify-center gap-3 border border-gray-300 py-2 rounded hover:bg-gray-100 transition"
-                >
-                    <img
-                        src="https://www.svgrepo.com/show/475656/google-color.svg"
-                        alt="Google"
-                        className="w-5 h-5"
-                    />
-                    <span className="text-gray-700 font-medium">Continue with Google</span>
-                </button>
+                <SocialLogin></SocialLogin>
 
                 <p>Don’t have any account? <Link to='/register'>Register</Link></p>
             </form>
