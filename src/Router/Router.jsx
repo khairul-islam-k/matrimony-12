@@ -3,6 +3,9 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home/Home/Home";
 import Biodatas from "../pages/Biodatas/Biodatas";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import AuthLayout from "../layout/AuthLayout";
+import RegistrationForm from "../pages/Auth/RegistrationForm";
+import LoginForm from "../pages/Auth/LoginForm";
 
 
 export const router = createBrowserRouter([
@@ -24,4 +27,18 @@ export const router = createBrowserRouter([
         }
     ]
   },
+  {
+    path: '/',
+    Component: AuthLayout,
+    children: [
+      {
+        path: 'register',
+        Component: RegistrationForm
+      },
+      {
+        path: 'login',
+        Component: LoginForm
+      }
+    ]
+  }
 ]);

@@ -3,10 +3,14 @@ import { Link, NavLink, useLocation } from "react-router";
 import { FiMenu, FiX } from "react-icons/fi";
 import logo from "../../assets/matrimony-logo.png";
 import "./Navbar.css";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
+
+    const user = useAuth();
+    console.log(user)
 
     const links = <>
         <li className='font-bold'><NavLink to="/">Home</NavLink></li>
