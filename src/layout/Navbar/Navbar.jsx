@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import { FiMenu, FiX } from "react-icons/fi";
-import logo from "../../assets/matrimony-logo.png";
 import "./Navbar.css";
 import useAuth from "../../hooks/useAuth";
+import NavLogo from "../../pages/Shared/NavLogo";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -24,6 +24,7 @@ const Navbar = () => {
         <li className='font-bold'><NavLink to="/">Home</NavLink></li>
         <li className='font-bold'><NavLink to="/biodatas">Biodatas</NavLink></li>
         <li className='font-bold'><NavLink to="/aboutUs">About Us</NavLink></li>
+        <li className='font-bold'><NavLink to="/dashboard">Dashboard</NavLink></li>
         <li>
             {
                 user ? <button
@@ -45,13 +46,10 @@ const Navbar = () => {
     }, [location.pathname]);
 
     return (
-        <nav className=" shadow-md px-4 py-3 relative z-50">
+        <nav className="px-4 py-3 relative z-50">
             <div className="flex items-center justify-between">
                 {/* Logo + Site Name */}
-                <Link to="/" className="flex items-center space-x-2">
-                    <img src={logo} alt="Logo" className="h-8 w-8 object-cover" />
-                    <span className="text-xl font-bold text-gray-800">Matri<span className='text-[#F9A51A]'>mony</span></span>
-                </Link>
+                <NavLogo></NavLogo>
 
                 {/* Mobile Menu Button */}
                 <button className="md:hidden text-gray-700" onClick={() => setIsOpen(!isOpen)}>

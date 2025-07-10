@@ -6,6 +6,7 @@ import AboutUs from "../pages/AboutUs/AboutUs";
 import AuthLayout from "../layout/AuthLayout";
 import RegistrationForm from "../pages/Auth/RegistrationForm";
 import LoginForm from "../pages/Auth/LoginForm";
+import DashboardLayout from "../layout/DashboardLayout";
 
 
 export const router = createBrowserRouter([
@@ -40,5 +41,9 @@ export const router = createBrowserRouter([
         Component: LoginForm
       }
     ]
+  },
+  {
+    path: 'dashboard',
+    Component: DashboardLayout
   }
 ]);

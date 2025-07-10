@@ -5,9 +5,11 @@ import { Outlet } from 'react-router';
 const MainLayout = () => {
     return (
         <div className='bg-[#d6edf1] '>
-            <Navbar></Navbar>
-            <Outlet></Outlet>
-            MainLayout
+            <div className='w-11/12 mx-auto'>
+                <Navbar></Navbar>
+                <Outlet></Outlet>
+                MainLayout
+            </div>
         </div>
     );
 };
