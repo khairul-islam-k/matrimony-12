@@ -101,6 +101,7 @@ const CreateBiodata = ({ userEmail }) => {
   return (
     <div className="max-w-4xl mx-auto bg-white p-8 shadow rounded">
       <h2 className="text-2xl font-bold text-center mb-6">Create Biodata</h2>
+      <p className='mb-7'>If the height and width of the image are equal, the image will be good or it will be a little problematic. Like 600*600</p>
 
       <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-6">
 

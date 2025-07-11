@@ -1,4 +1,5 @@
 import React from 'react';
+import PremiumMembers from '../PremiumMembers/PremiumMembers';
 
 const Home = () => {
     return (
@@ -10,6 +11,10 @@ const Home = () => {
                     <p className='text-white mt-4 lg:bg-black text-center'>Join millions of singles finding meaningful relationships through shared values and beliefs</p>
                 </div>
             </div>
+
+            {/* premium members */}
+            <PremiumMembers></PremiumMembers>
+
             Home
         </div>
     );
