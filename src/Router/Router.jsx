@@ -7,6 +7,8 @@ import AuthLayout from "../layout/AuthLayout";
 import RegistrationForm from "../pages/Auth/RegistrationForm";
 import LoginForm from "../pages/Auth/LoginForm";
 import DashboardLayout from "../layout/DashboardLayout";
+import CreateBiodata from "../pages/dashboard/CreateBiodata/CreateBiodata";
+import PrivateRoute from "../Routes/PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -44,6 +46,12 @@ export const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    Component: DashboardLayout
+    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+    children: [
+      {
+        path: 'createBiodata',
+        Component: CreateBiodata
+      }
+    ]
   }
 ]);

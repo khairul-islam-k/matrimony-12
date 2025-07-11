@@ -10,15 +10,15 @@ const DashboardLayout = () => {
 
   const dashLink = <>
     <li><NavLink to="/dashboard">Home</NavLink></li>
-    <li><NavLink to="/dashboard/parcels">My Parcels</NavLink></li>
+    <li><NavLink to="/dashboard/createBiodata">create Biodata</NavLink></li>
     <li><NavLink to="/dashboard/payments">Payments</NavLink></li>
     <li><NavLink to="/">Back to Home</NavLink></li>
   </>
 
   return (
-    <div className="flex overflow-hidden bg-[#d6edf1]">
+    <div className="flex overflow-hidden  h-screen">
       {/* Sidebar for large screens */}
-      <div className="hidden lg:flex lg:flex-col w-64 bg-gray-100 p-4 shadow h-screen">
+      <div className="hidden lg:flex lg:flex-col w-64 bg-gray-100 p-4 shadow ">
 
         {/* logo */}
         <NavLogo></NavLogo>
@@ -61,7 +61,7 @@ const DashboardLayout = () => {
         </div>
 
         {/* Page content */}
-        <main className="flex-1 overflow-y-auto p-4 bg-gray-50">
+        <main className="flex-1 overflow-y-auto p-4 bg-[#d6edf1]">
           <Outlet />
         </main>
       </div>
