@@ -9,6 +9,7 @@ import LoginForm from "../pages/Auth/LoginForm";
 import DashboardLayout from "../layout/DashboardLayout";
 import CreateBiodata from "../pages/dashboard/CreateBiodata/CreateBiodata";
 import PrivateRoute from "../Routes/PrivateRoute";
+import BiodataDetails from "../pages/Shared/BiodataDetails";
 
 
 export const router = createBrowserRouter([
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
         {
           path: 'aboutUs',
           Component: AboutUs
+        },
+        {
+          path: 'biodata/:id',
+          element: <PrivateRoute><BiodataDetails></BiodataDetails></PrivateRoute>
         }
     ]
   },
