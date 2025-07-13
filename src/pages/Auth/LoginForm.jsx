@@ -1,11 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import useAuth from '../../hooks/useAuth';
 import SocialLogin from './SocialLogin';
+import Swal from 'sweetalert2';
 
 const LoginForm = () => {
-    const {loginUser} = useAuth();
+    const { loginUser } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const {
         register,
@@ -17,11 +20,19 @@ const LoginForm = () => {
         console.log("Registration Data:", data);
         // Send data to your backend or API here
         loginUser(data.email, data.password)
-        .then(result => {
-            console.log(result);
-        }).catch(error => {
-            console.log(error)
-        })
+            .then(result => {
+                navigate(location?.state || '/');
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+            }).catch(error => {
+                console.log(error)
+            })
     };
 
     return (
@@ -61,7 +72,7 @@ const LoginForm = () => {
                 {/* Submit */}
                 <button
                     type="submit"
-                    className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+                    className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition cursor-pointer"
                 >
                     Login
                 </button>

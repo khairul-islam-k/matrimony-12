@@ -10,6 +10,7 @@ import DashboardLayout from "../layout/DashboardLayout";
 import CreateBiodata from "../pages/dashboard/CreateBiodata/CreateBiodata";
 import PrivateRoute from "../Routes/PrivateRoute";
 import BiodataDetails from "../pages/Shared/BiodataDetails";
+import ManageUser from "../pages/dashboard/Admin/ManageUser/ManageUser";
 
 
 export const router = createBrowserRouter([
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
       {
         path: 'createBiodata',
         Component: CreateBiodata
+      },
+      {
+        path:'manage',
+        element: <ManageUser></ManageUser>
       }
     ]
   }

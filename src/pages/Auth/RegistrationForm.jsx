@@ -1,9 +1,12 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const RegistrationForm = () => {
-    const {createUser} = useAuth();
+    const { createUser, updateUser } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
 
 
     const {
@@ -13,14 +16,30 @@ const RegistrationForm = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log("Registration Data:", data);
+  
         // Send data to your backend or API here
         createUser(data.email, data.password)
-        .then(result => {
-            console.log(result);
-        }).catch(error => {
-            console.log(error)
-        })
+            .then(result => {
+
+                updateUser(data.name, data.photo)
+                    .then(() => {
+                        navigate(location?.state || '/');
+
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Your work has been saved",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+
+                    }).catch(error => {
+                        console.log(error);
+                    })
+
+            }).catch(error => {
+                console.log(error)
+            })
     };
 
     return (
@@ -48,7 +67,7 @@ const RegistrationForm = () => {
                         className="w-full px-4 py-2 border rounded"
                         placeholder="https://example.com/photo.jpg"
                     />
-                    
+
                 </div>
 
                 {/* Email */}
@@ -81,7 +100,7 @@ const RegistrationForm = () => {
                 {/* Submit */}
                 <button
                     type="submit"
-                    className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+                    className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition cursor-pointer"
                 >
                     Register
                 </button>

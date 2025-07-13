@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router";
+import Loader from "../../Shared/Loader/Loader";
 
 const PremiumMembers = () => {
   const axiosSecure = useAxiosSecure();
@@ -14,7 +15,9 @@ const PremiumMembers = () => {
   });
 
 
-  if (isLoading) return <div className="text-center py-10">Loading...</div>;
+  if (isLoading) {
+    return <Loader></Loader>
+  }
   if (isError) return <div className="text-center py-10 text-red-600">Failed to load members</div>;
 
   return (

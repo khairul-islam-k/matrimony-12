@@ -1,14 +1,17 @@
 import { Link, useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { useEffect, useState } from "react";
+import useMyDetails from "../../hooks/useMyDetails";
+import Loader from "./Loader/Loader";
 
 const BiodataDetails = () => {
-    //const [similar, setSimilar] = useState([]);
     const { id } = useParams();
     const axiosSecure = useAxiosSecure();
+    const {myBiodata} = useMyDetails();
+    console.log(myBiodata);
+    //console.log(user?.Biodata_Id);
 
-    const { data: biodata = {}, isLoading, isError } = useQuery({
+    const { data: biodata = {}, isLoading, isError, isPending } = useQuery({
         queryKey: ["biodata", id],
         queryFn: async () => {
             const res = await axiosSecure.get(`/biodata/${id}`);
@@ -17,10 +20,11 @@ const BiodataDetails = () => {
     });
 
 
+
     // Second query: Similar biodata — only fetch if `biodataType` is known
     const { data: similar = [] } = useQuery({
-        queryKey: ["similar", biodata?.biodataType, id],
-        enabled: !!biodata,
+        queryKey: ["similar", biodata?.biodataType, biodata?._id],
+        enabled: !!biodata._id, // ✅ Wait until biodata is loaded
         queryFn: async () => {
             const res = await axiosSecure.get(
                 `/similarBiodatas/${biodata.biodataType}/${biodata._id}`
@@ -28,9 +32,11 @@ const BiodataDetails = () => {
             return res.data;
         },
     });
-    
 
-    if (isLoading) return <div className="text-center py-10">Loading...</div>;
+
+    if (isLoading) {
+        return <Loader></Loader>
+    }
     if (isError) return <div className="text-center py-10 text-red-600">Failed to load biodata</div>;
 
 
@@ -41,7 +47,7 @@ const BiodataDetails = () => {
             <img
                 src={biodata.photoUrl}
                 alt={biodata.name}
-                className="w-full h-full rounded-lg mb-6 shadow"
+                className="rounded-lg mb-6 shadow"
             />
 
             {/* Info Grid */}
@@ -58,8 +64,25 @@ const BiodataDetails = () => {
                 <p><span className="font-semibold">Mother's Name:</span> {biodata.motherName}</p>
                 <p><span className="font-semibold">Permanent Division:</span> {biodata.permanentDivision}</p>
                 <p><span className="font-semibold">Present Division:</span> {biodata.presentDivision}</p>
-                <p><span className="font-semibold">Email:</span> {biodata.email}</p>
-                <p><span className="font-semibold">Mobile:</span> {biodata.mobile}</p>
+                <p><span className="font-semibold">User Role:</span> <span className='text-red-500 font-bold'>{biodata.Biodata_Id}</span></p>
+
+                {
+                    myBiodata?.Biodata_Id === 'user' ?
+                        <>
+                            <button
+                            className="inline-block mt-2 text-white bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition cursor-pointer"
+                            >Contact Information</button>
+                            <button
+                            className="inline-block mt-2 text-white bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition cursor-pointer"
+                            >Add to Favourites</button>
+                        </> :
+                        <>
+                            <p><span className="font-semibold">Email:</span> {biodata.email}</p>
+                            <p><span className="font-semibold">Mobile:</span> {biodata.mobile}</p>
+                        </>
+                }
+
+
             </div>
 
             {/* Expected Partner */}

@@ -11,6 +11,7 @@ const DashboardLayout = () => {
   const dashLink = <>
     <li><NavLink to="/dashboard">Home</NavLink></li>
     <li><NavLink to="/dashboard/createBiodata">create Biodata</NavLink></li>
+    <li><NavLink to="/dashboard/manage">Manage User</NavLink></li>
     <li><NavLink to="/dashboard/payments">Payments</NavLink></li>
     <li><NavLink to="/">Back to Home</NavLink></li>
   </>

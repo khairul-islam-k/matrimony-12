@@ -5,10 +5,12 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
+import { useNavigate } from "react-router";
 
 const CreateBiodata = ({ userEmail }) => {
   const [photoUrl, setPhotoUrl] = useState('');
   const {user} = useAuth();
+  const navigate = useNavigate();
 
   console.log(user);
 
@@ -58,6 +60,7 @@ const CreateBiodata = ({ userEmail }) => {
       const result = await postBiodata(biodata);
 
 
+      navigate('/dashboard')
       Swal.fire({
         position: "top-end",
         icon: "success",
