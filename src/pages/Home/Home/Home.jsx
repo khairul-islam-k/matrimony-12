@@ -15,7 +15,6 @@ const Home = () => {
             {/* premium members */}
             <PremiumMembers></PremiumMembers>
 
-            Home
         </div>
     );
 };

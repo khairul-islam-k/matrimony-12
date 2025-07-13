@@ -8,7 +8,6 @@ const ManageUser = () => {
     const axiosSecure = useAxiosSecure();
     const queryClient = useQueryClient();
     const [search, setSearch] = useState([]);
-    console.log(search);
 
     // Get all users
     const { data: users = [], isLoading } = useQuery({
@@ -41,7 +40,7 @@ const ManageUser = () => {
     //console.log(filterUser);
 
     const handleSearch = (e) => {
-        console.log(e.target.value);
+    
         const filterUser = users.filter(user => user.name.toLowerCase().includes(e.target.value.toLowerCase()));
         setSearch(filterUser);
     }
