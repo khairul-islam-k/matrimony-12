@@ -87,7 +87,7 @@ const ManageUser = () => {
                                     ) : (
                                         <button
                                             onClick={() => makeAdmin.mutate(user._id)}
-                                            className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 text-sm"
+                                            className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 text-sm cursor-pointer"
                                         >
                                             Make Admin
                                         </button>
@@ -99,7 +99,7 @@ const ManageUser = () => {
                                     ) : (
                                         <button
                                             onClick={() => makePremium.mutate(user._id)}
-                                            className="bg-purple-500 text-white px-4 py-1 rounded hover:bg-purple-600 text-sm"
+                                            className="bg-purple-500 text-white px-4 py-1 rounded hover:bg-purple-600 text-sm cursor-pointer"
                                         >
                                             Make Premium
                                         </button>
@@ -120,7 +120,7 @@ const ManageUser = () => {
                                         ) : (
                                             <button
                                                 onClick={() => makeAdmin.mutate(user._id)}
-                                                className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 text-sm"
+                                                className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 text-sm cursor-pointer"
                                             >
                                                 Make Admin
                                             </button>
@@ -132,7 +132,7 @@ const ManageUser = () => {
                                         ) : (
                                             <button
                                                 onClick={() => makePremium.mutate(user._id)}
-                                                className="bg-purple-500 text-white px-4 py-1 rounded hover:bg-purple-600 text-sm"
+                                                className="bg-purple-500 text-white px-4 py-1 rounded hover:bg-purple-600 text-sm cursor-pointer"
                                             >
                                                 Make Premium
                                             </button>
