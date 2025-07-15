@@ -3,6 +3,7 @@ import React from 'react';
 import { useParams } from 'react-router';
 import useMyDetails from '../../hooks/useMyDetails';
 import Loader from '../Shared/Loader/Loader';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const CheckoutForm = () => {
     const {id} = useParams();
@@ -10,6 +11,7 @@ const CheckoutForm = () => {
     console.log(myBiodata);
     const stripe = useStripe();
     const elements = useElements();
+    const axiosSecure = useAxiosSecure();
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -33,6 +35,28 @@ const CheckoutForm = () => {
             console.log(error)
         } else {
             console.log(paymentMethod)
+        }
+
+        const res = await axiosSecure.post('/create-payment-intent',{
+          amountInCents : 5*100,
+          id
+        })
+
+        console.log(res.data);
+        const clientSecret = res.data.clientSecret;
+        const result = await stripe.confirmCardPayment(clientSecret,{
+          payment_method: {
+            card: elements.getElement(CardElement),
+            billing_details:{
+              name: 'customer name'
+            }
+          }
+        })
+
+        if (result.error) {
+          console.log(result.error.message);
+        } else {
+          console.log('success', result);
         }
         
 
