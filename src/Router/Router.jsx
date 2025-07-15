@@ -14,6 +14,7 @@ import ManageUser from "../pages/dashboard/Admin/ManageUser/ManageUser";
 import Forbidden from "../pages/Forbidden/Forbidden";
 import AdminRout from "../Routes/AdminRout";
 import YourPayment from "../pages/YourPayment/YourPayment";
+import MyRequestContact from "../pages/dashboard/user/MyRequestContact/MyRequestContact";
 
 
 export const router = createBrowserRouter([
@@ -21,30 +22,30 @@ export const router = createBrowserRouter([
     path: "/",
     Component: MainLayout,
     children: [
-        {
-            index: true,
-            Component: Home
-        },
-        {
-            path: 'biodatas',
-            Component: Biodatas
-        },
-        {
-          path: 'aboutUs',
-          Component: AboutUs
-        },
-        {
-          path: 'biodata/:id',
-          element: <PrivateRoute><BiodataDetails></BiodataDetails></PrivateRoute>
-        },
-        {
-          path:'payment/:id',
-          element: <PrivateRoute><YourPayment></YourPayment></PrivateRoute>
-        },
-        {
-          path: 'forbidden',
-          Component: Forbidden
-        }
+      {
+        index: true,
+        Component: Home
+      },
+      {
+        path: 'biodatas',
+        Component: Biodatas
+      },
+      {
+        path: 'aboutUs',
+        Component: AboutUs
+      },
+      {
+        path: 'biodata/:id',
+        element: <PrivateRoute><BiodataDetails></BiodataDetails></PrivateRoute>
+      },
+      {
+        path: 'payment/:id',
+        element: <PrivateRoute><YourPayment></YourPayment></PrivateRoute>
+      },
+      {
+        path: 'forbidden',
+        Component: Forbidden
+      }
     ]
   },
   {
@@ -70,8 +71,12 @@ export const router = createBrowserRouter([
         Component: CreateBiodata
       },
       {
-        path:'manage',
+        path: 'manage',
         element: <AdminRout><ManageUser></ManageUser></AdminRout>
+      },
+      {
+        path: 'myRequest',
+        element: <MyRequestContact></MyRequestContact>
       }
     ]
   }

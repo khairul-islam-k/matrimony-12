@@ -12,12 +12,14 @@ const DashboardLayout = () => {
     <li><NavLink to="/dashboard">Home</NavLink></li>
     <li><NavLink to="/dashboard/createBiodata">create Biodata</NavLink></li>
     <li><NavLink to="/dashboard/manage">Manage User</NavLink></li>
+    <li><NavLink to="/dashboard/myRequest">My Contact Request</NavLink></li>
+    <li><NavLink to="/dashboard/approvedContactRequest">Approved contact request</NavLink></li>
     <li><NavLink to="/dashboard/payments">Payments</NavLink></li>
     <li><NavLink to="/">Back to Home</NavLink></li>
   </>
 
   return (
-    <div className="flex overflow-hidden  h-screen">
+    <div className="flex overflow-hidden h-screen">
       {/* Sidebar for large screens */}
       <div className="hidden lg:flex lg:flex-col w-64 bg-gray-100 p-4 shadow ">
 
@@ -62,7 +64,7 @@ const DashboardLayout = () => {
         </div>
 
         {/* Page content */}
-        <main className="flex-1 overflow-y-auto p-4 bg-[#d6edf1]">
+        <main className="flex-1 overflow-auto p-4 bg-[#d6edf1]">
           <Outlet />
         </main>
       </div>

@@ -1,72 +1,95 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import useMyDetails from '../../hooks/useMyDetails';
 import Loader from '../Shared/Loader/Loader';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const CheckoutForm = () => {
-    const {id} = useParams();
-    const {myBiodata, isLoading} = useMyDetails();
-    console.log(myBiodata);
-    const stripe = useStripe();
-    const elements = useElements();
-    const axiosSecure = useAxiosSecure();
+  const { id } = useParams();
+  const { myBiodata, isLoading } = useMyDetails();
+  const stripe = useStripe();
+  const elements = useElements();
+  const axiosSecure = useAxiosSecure();
+  const [cardError, setCardError] = useState('');
 
-    const handleSubmit = async(e) => {
-        e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        if (!stripe || !elements) {
-            return;
-        }
-
-        const card = elements.getElement(CardElement);
-
-        if (!card) {
-            return;
-        }
-
-        const {error, paymentMethod} = await stripe.createPaymentMethod({
-            type: 'card',
-            card
-        })
-
-        if (error) {
-            console.log(error)
-        } else {
-            console.log(paymentMethod)
-        }
-
-        const res = await axiosSecure.post('/create-payment-intent',{
-          amountInCents : 5*100,
-          id
-        })
-
-        console.log(res.data);
-        const clientSecret = res.data.clientSecret;
-        const result = await stripe.confirmCardPayment(clientSecret,{
-          payment_method: {
-            card: elements.getElement(CardElement),
-            billing_details:{
-              name: 'customer name'
-            }
-          }
-        })
-
-        if (result.error) {
-          console.log(result.error.message);
-        } else {
-          console.log('success', result);
-        }
-        
-
+    if (!stripe || !elements) {
+      return;
     }
 
-    if (isLoading) {
-        return <Loader></Loader>
+    const card = elements.getElement(CardElement);
+
+    if (!card) {
+      return;
     }
-    return (
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 rounded shadow space-y-4">
+
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: 'card',
+      card
+    })
+
+    if (error) {
+      setCardError(error.message);
+    } else {
+      setCardError('');
+    }
+
+    const res = await axiosSecure.post('/create-payment-intent', {
+      amountInCents: 5 * 100,
+      id
+    })
+
+
+    const clientSecret = res.data.clientSecret;
+    const result = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+        billing_details: {
+          name: myBiodata?.name,
+          email: myBiodata?.email
+        }
+      }
+    })
+
+    if (result.error) {
+      setCardError(result.error.message);
+      return;
+    } else {
+      setCardError('');
+    }
+
+    //store payment
+    const payRes = await axiosSecure.post('/record-payment', {
+      biodataId: id,
+      email: myBiodata?.email,
+      transactionId: result?.paymentIntent?.id,
+      amount: 5,
+      method: result?.paymentIntent?.payment_method_types[0]
+    })
+
+    if (payRes.data?.insertedId) {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "$5 has been payed",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+
+  }
+
+
+
+  if (isLoading) {
+    return <Loader></Loader>
+  }
+  return (
+    <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 rounded shadow space-y-4">
       <div>
         <label className="block mb-1 font-semibold">Biodata ID</label>
         <input
@@ -105,17 +128,17 @@ const CheckoutForm = () => {
         </div>
       </div>
 
-      {/* {cardError && <p className="text-red-500">{cardError}</p>} */}
+      {cardError && <p className="text-red-500">{cardError}</p>}
 
       <button
         type="submit"
         disabled={!stripe}
         className="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700 transition cursor-pointer"
       >
-        Pay Now
+        Pay $5 now
       </button>
     </form>
-    );
+  );
 };
 
 export default CheckoutForm;
