@@ -11,6 +11,9 @@ import CreateBiodata from "../pages/dashboard/CreateBiodata/CreateBiodata";
 import PrivateRoute from "../Routes/PrivateRoute";
 import BiodataDetails from "../pages/Shared/BiodataDetails";
 import ManageUser from "../pages/dashboard/Admin/ManageUser/ManageUser";
+import Forbidden from "../pages/Forbidden/Forbidden";
+import AdminRout from "../Routes/AdminRout";
+import YourPayment from "../pages/YourPayment/YourPayment";
 
 
 export const router = createBrowserRouter([
@@ -33,6 +36,14 @@ export const router = createBrowserRouter([
         {
           path: 'biodata/:id',
           element: <PrivateRoute><BiodataDetails></BiodataDetails></PrivateRoute>
+        },
+        {
+          path:'payment/:id',
+          element: <PrivateRoute><YourPayment></YourPayment></PrivateRoute>
+        },
+        {
+          path: 'forbidden',
+          Component: Forbidden
         }
     ]
   },
@@ -60,7 +71,7 @@ export const router = createBrowserRouter([
       },
       {
         path:'manage',
-        element: <ManageUser></ManageUser>
+        element: <AdminRout><ManageUser></ManageUser></AdminRout>
       }
     ]
   }

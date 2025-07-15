@@ -7,8 +7,7 @@ import Loader from "./Loader/Loader";
 const BiodataDetails = () => {
     const { id } = useParams();
     const axiosSecure = useAxiosSecure();
-    const {myBiodata} = useMyDetails();
-    console.log(myBiodata);
+    const { myBiodata } = useMyDetails();
     //console.log(user?.Biodata_Id);
 
     const { data: biodata = {}, isLoading, isError, isPending } = useQuery({
@@ -67,19 +66,24 @@ const BiodataDetails = () => {
                 <p><span className="font-semibold">User Role:</span> <span className='text-red-500 font-bold'>{biodata.Biodata_Id}</span></p>
 
                 {
-                    myBiodata?.Biodata_Id === 'user' ?
-                        <>
-                            <button
-                            className="inline-block mt-2 text-white bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition cursor-pointer"
-                            >Contact Information</button>
-                            <button
-                            className="inline-block mt-2 text-white bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition cursor-pointer"
-                            >Add to Favourites</button>
-                        </> :
-                        <>
-                            <p><span className="font-semibold">Email:</span> {biodata.email}</p>
-                            <p><span className="font-semibold">Mobile:</span> {biodata.mobile}</p>
-                        </>
+                    myBiodata && <div>
+                        {
+                            myBiodata?.Biodata_Id === 'user' ?
+                                <>
+                                    <Link to={`/payment/${biodata._id}`}><button
+                                        className="inline-block mt-2 text-white bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition cursor-pointer mr-3"
+                                    >Contact Information</button>
+                                    </Link>
+                                    <button
+                                        className="inline-block mt-2 text-white bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition cursor-pointer"
+                                    >Add to Favourites</button>
+                                </> :
+                                <>
+                                    <p><span className="font-semibold">Email:</span> {biodata.email}</p>
+                                    <p><span className="font-semibold">Mobile:</span> {biodata.mobile}</p>
+                                </>
+                        }
+                    </div>
                 }
 
 
