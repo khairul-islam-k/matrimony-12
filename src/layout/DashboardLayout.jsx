@@ -22,6 +22,7 @@ const DashboardLayout = () => {
     <li><NavLink to="/dashboard/myRequest">My Contact Request</NavLink></li>
     <li><NavLink to="/dashboard/approvedContactRequest">Approved contact request</NavLink></li>
     <li><NavLink to="/dashboard/favorite">My Favourites Biodata</NavLink></li>
+    <li><NavLink to="/dashboard/viewBiodata">View Biodata</NavLink></li>
   </>
 
   return (

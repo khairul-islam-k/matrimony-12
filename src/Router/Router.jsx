@@ -18,6 +18,7 @@ import MyRequestContact from "../pages/dashboard/user/MyRequestContact/MyRequest
 import ApprovedRequest from "../pages/dashboard/Admin/ManageUser/ApprovedRequest/ApprovedRequest";
 import EditBiodata from "../pages/dashboard/EditBiodata/EditBiodata";
 import MyFavoriteBiodata from "../pages/dashboard/MyFavoriteBiodata/MyFavoriteBiodata";
+import ViewBiodata from "../pages/dashboard/ViewBiodata/ViewBiodata";
 
 
 export const router = createBrowserRouter([
@@ -88,6 +89,10 @@ export const router = createBrowserRouter([
       {
         path: 'favorite',
         element: <MyFavoriteBiodata></MyFavoriteBiodata>
+      },
+      {
+        path: 'viewBiodata',
+        element: <ViewBiodata></ViewBiodata>
       },
       {
         path:'approvedContactRequest',
