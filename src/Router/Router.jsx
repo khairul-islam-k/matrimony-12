@@ -17,6 +17,7 @@ import YourPayment from "../pages/YourPayment/YourPayment";
 import MyRequestContact from "../pages/dashboard/user/MyRequestContact/MyRequestContact";
 import ApprovedRequest from "../pages/dashboard/Admin/ManageUser/ApprovedRequest/ApprovedRequest";
 import EditBiodata from "../pages/dashboard/EditBiodata/EditBiodata";
+import MyFavoriteBiodata from "../pages/dashboard/MyFavoriteBiodata/MyFavoriteBiodata";
 
 
 export const router = createBrowserRouter([
@@ -83,6 +84,10 @@ export const router = createBrowserRouter([
       {
         path: 'myRequest',
         element: <MyRequestContact></MyRequestContact>
+      },
+      {
+        path: 'favorite',
+        element: <MyFavoriteBiodata></MyFavoriteBiodata>
       },
       {
         path:'approvedContactRequest',

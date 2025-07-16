@@ -8,7 +8,6 @@ import useMyDetails from '../hooks/useMyDetails';
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const {myBiodata} = useMyDetails();
-  console.log(myBiodata);
 
 
   const dashLink = <>
@@ -22,8 +21,7 @@ const DashboardLayout = () => {
     <li><NavLink to="/dashboard/manage">Manage User</NavLink></li>
     <li><NavLink to="/dashboard/myRequest">My Contact Request</NavLink></li>
     <li><NavLink to="/dashboard/approvedContactRequest">Approved contact request</NavLink></li>
-    <li><NavLink to="/dashboard/payments">Payments</NavLink></li>
-    <li><NavLink to="/">Back to Home</NavLink></li>
+    <li><NavLink to="/dashboard/favorite">My Favourites Biodata</NavLink></li>
   </>
 
   return (

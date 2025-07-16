@@ -3,12 +3,12 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useMyDetails from "../../hooks/useMyDetails";
 import Loader from "./Loader/Loader";
+import Swal from "sweetalert2";
 
 const BiodataDetails = () => {
     const { id } = useParams();
     const axiosSecure = useAxiosSecure();
     const { myBiodata } = useMyDetails();
-    console.log(myBiodata)
     //console.log(user?.Biodata_Id);
 
     const { data: biodata = {}, isLoading, isError, isPending } = useQuery({
@@ -32,6 +32,27 @@ const BiodataDetails = () => {
             return res.data;
         },
     });
+
+    const handleAddToFavorite = (id) => {
+        const favoriteData = {
+            biodataId: id,
+            userEmail: myBiodata?.email,
+        };
+
+        axiosSecure.post('/favorites', favoriteData)
+            .then(res => {
+                if (res.status === 201) {
+                    Swal.fire('Added!', 'Biodata added to your favorites.', 'success');
+                }
+            })
+            .catch(err => {
+                if (err.response?.status === 409) {
+                    Swal.fire('Already Added', 'This biodata is already in your favorites.', 'info');
+                } else {
+                    Swal.fire('Error', 'Failed to add to favorites.', 'error');
+                }
+            });
+    };
 
 
     if (isLoading) {
@@ -76,6 +97,7 @@ const BiodataDetails = () => {
                                     >Contact Information</button>
                                     </Link>
                                     <button
+                                        onClick={() => handleAddToFavorite(biodata._id)}
                                         className="inline-block mt-2 text-white bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition cursor-pointer"
                                     >Add to Favourites</button>
                                 </> :
