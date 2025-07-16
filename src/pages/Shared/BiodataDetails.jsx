@@ -8,6 +8,7 @@ const BiodataDetails = () => {
     const { id } = useParams();
     const axiosSecure = useAxiosSecure();
     const { myBiodata } = useMyDetails();
+    console.log(myBiodata)
     //console.log(user?.Biodata_Id);
 
     const { data: biodata = {}, isLoading, isError, isPending } = useQuery({

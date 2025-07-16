@@ -7,7 +7,7 @@ import { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { useNavigate } from "react-router";
 
-const CreateBiodata = ({ userEmail }) => {
+const CreateBiodata = () => {
   const [photoUrl, setPhotoUrl] = useState('');
   const {user} = useAuth();
   const navigate = useNavigate();
@@ -287,7 +287,7 @@ const CreateBiodata = ({ userEmail }) => {
         <div>
           <label className="block font-medium mb-1">Mobile Number*</label>
           <input
-            type="tel"
+            type="number"
             {...register("mobile", { required: true })}
             className="w-full border rounded px-3 py-2"
           />

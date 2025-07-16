@@ -3,14 +3,22 @@ import { NavLink, Outlet } from 'react-router';
 import { FiMenu } from 'react-icons/fi';
 import { IoClose } from 'react-icons/io5';
 import NavLogo from '../pages/Shared/NavLogo';
+import useMyDetails from '../hooks/useMyDetails';
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const {myBiodata} = useMyDetails();
+  console.log(myBiodata);
 
 
   const dashLink = <>
     <li><NavLink to="/dashboard">Home</NavLink></li>
-    <li><NavLink to="/dashboard/createBiodata">create Biodata</NavLink></li>
+
+    {
+      myBiodata ? <li><NavLink to="/dashboard/editBiodata">Edit Biodata</NavLink></li> : <li><NavLink to="/dashboard/createBiodata">create Biodata</NavLink></li>
+    }
+
+    {/* <li><NavLink to="/dashboard/createBiodata">create Biodata</NavLink></li> */}
     <li><NavLink to="/dashboard/manage">Manage User</NavLink></li>
     <li><NavLink to="/dashboard/myRequest">My Contact Request</NavLink></li>
     <li><NavLink to="/dashboard/approvedContactRequest">Approved contact request</NavLink></li>
