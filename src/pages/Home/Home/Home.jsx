@@ -1,6 +1,7 @@
 import React from 'react';
 import PremiumMembers from '../PremiumMembers/PremiumMembers';
 import HowItWorks from '../HowItWork/HowItWorks';
+import SuccessCounter from '../SuccessCountup/SuccessCounter';
 
 const Home = () => {
     return (
@@ -18,6 +19,9 @@ const Home = () => {
 
             {/* how to work */}
             <HowItWorks></HowItWorks>
+
+            {/* success countup */}
+            <SuccessCounter></SuccessCounter>
 
         </div>
     );

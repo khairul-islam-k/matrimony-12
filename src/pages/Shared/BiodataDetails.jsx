@@ -11,7 +11,7 @@ const BiodataDetails = () => {
     const { myBiodata } = useMyDetails();
     //console.log(user?.Biodata_Id);
 
-    const { data: biodata = {}, isLoading, isError, isPending } = useQuery({
+    const { data: biodata = {}, isLoading, isError } = useQuery({
         queryKey: ["biodata", id],
         queryFn: async () => {
             const res = await axiosSecure.get(`/biodata/${id}`);
