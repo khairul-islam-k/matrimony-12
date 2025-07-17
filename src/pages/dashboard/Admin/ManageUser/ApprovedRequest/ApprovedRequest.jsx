@@ -10,7 +10,7 @@ const ApprovedRequest = () => {
     const { data: requests = [], isLoading } = useQuery({
         queryKey: ['contactRequests'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/contactRequests');
+            const res = await axiosSecure.get('/contactRequests/pending');
             return res.data;
         },
     });
@@ -65,6 +65,8 @@ const ApprovedRequest = () => {
                     </thead>
                     <tbody>
                         {requests.map((req) => (
+                            
+
                             <tr key={req._id} className="hover:bg-gray-50">
                                 <td className="p-3 border">{req.biodataName}</td>
                                 <td className="p-3 border">{req.biodataEmail}</td>
@@ -91,6 +93,8 @@ const ApprovedRequest = () => {
                                     )}
                                 </td>
                             </tr>
+
+
                         ))}
                         {requests.length === 0 && (
                             <tr>
@@ -98,6 +102,7 @@ const ApprovedRequest = () => {
                                     No contact requests found.
                                 </td>
                             </tr>
+
                         )}
                     </tbody>
                 </table>

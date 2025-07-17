@@ -4,10 +4,26 @@ import { FiMenu } from 'react-icons/fi';
 import { IoClose } from 'react-icons/io5';
 import NavLogo from '../pages/Shared/NavLogo';
 import useMyDetails from '../hooks/useMyDetails';
+import useAuth from '../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const {myBiodata} = useMyDetails();
+  const { myBiodata } = useMyDetails();
+  const { logoutUser } = useAuth();
+
+  const handleLogOut = () => {
+    logoutUser()
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "LogOut successfully",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      })
+  }
 
 
   const dashLink = <>
@@ -18,11 +34,31 @@ const DashboardLayout = () => {
     }
 
     {/* <li><NavLink to="/dashboard/createBiodata">create Biodata</NavLink></li> */}
-    <li><NavLink to="/dashboard/manage">Manage User</NavLink></li>
-    <li><NavLink to="/dashboard/myRequest">My Contact Request</NavLink></li>
-    <li><NavLink to="/dashboard/approvedContactRequest">Approved contact request</NavLink></li>
-    <li><NavLink to="/dashboard/favorite">My Favourites Biodata</NavLink></li>
-    <li><NavLink to="/dashboard/viewBiodata">View Biodata</NavLink></li>
+
+
+    {
+      myBiodata?.Biodata_Id === 'admin' && <>
+        <li><NavLink to="/dashboard/manage">Manage User</NavLink></li>
+        <li><NavLink to="/dashboard/approvedPremium">Approved premium</NavLink></li>
+        <li><NavLink to="/dashboard/premiumApproval">premium Approval</NavLink></li>
+        <li><NavLink to="/dashboard/approvedContactRequest">Approved contact request</NavLink></li>
+        <li><NavLink to="/dashboard/myContactApproval">My Contact Approval</NavLink></li>
+      </>
+    }
+
+    {
+      myBiodata?.Biodata_Id === 'user' && <>
+        <li><NavLink to="/dashboard/viewBiodata">View Biodata</NavLink></li>
+        <li><NavLink to="/dashboard/favorite">My Favourites Biodata</NavLink></li>
+        <li><NavLink to="/dashboard/myRequest">My Contact Request</NavLink></li>
+      </>
+    }
+
+    <li><button
+      onClick={handleLogOut}
+      className='mt-2 px-4 py-1 bg-gray-800 text-white rounded hover:bg-blue-600 cursor-pointer'>LogOut</button></li>
+
+
   </>
 
   return (

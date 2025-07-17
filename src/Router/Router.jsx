@@ -19,6 +19,10 @@ import ApprovedRequest from "../pages/dashboard/Admin/ManageUser/ApprovedRequest
 import EditBiodata from "../pages/dashboard/EditBiodata/EditBiodata";
 import MyFavoriteBiodata from "../pages/dashboard/MyFavoriteBiodata/MyFavoriteBiodata";
 import ViewBiodata from "../pages/dashboard/ViewBiodata/ViewBiodata";
+import ApprovedPremium from "../pages/dashboard/ApprovedPremium/ApprovedPremium";
+import PremiumApproval from "../pages/dashboard/PremiumAproval/PremiumApproval";
+import UserRout from "../Routes/UserRout";
+import MyContactApproval from "../pages/dashboard/Admin/MyContactApproval/MyContactApproval";
 
 
 export const router = createBrowserRouter([
@@ -84,19 +88,31 @@ export const router = createBrowserRouter([
       },
       {
         path: 'myRequest',
-        element: <MyRequestContact></MyRequestContact>
+        element: <UserRout><MyRequestContact></MyRequestContact></UserRout>
       },
       {
         path: 'favorite',
-        element: <MyFavoriteBiodata></MyFavoriteBiodata>
+        element: <UserRout><MyFavoriteBiodata></MyFavoriteBiodata></UserRout>
       },
       {
         path: 'viewBiodata',
-        element: <ViewBiodata></ViewBiodata>
+        element: <UserRout><ViewBiodata></ViewBiodata></UserRout>
       },
       {
         path:'approvedContactRequest',
         element: <AdminRout><ApprovedRequest></ApprovedRequest></AdminRout>
+      },
+      {
+        path: 'myContactApproval',
+        element: <AdminRout><MyContactApproval></MyContactApproval></AdminRout>
+      },
+      {
+        path: 'approvedPremium',
+        element: <AdminRout><ApprovedPremium></ApprovedPremium></AdminRout>
+      },
+      {
+        path: 'premiumApproval',
+        element: <AdminRout><PremiumApproval></PremiumApproval></AdminRout>
       }
     ]
   }

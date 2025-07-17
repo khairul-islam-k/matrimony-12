@@ -31,7 +31,14 @@ const LoginForm = () => {
                 });
 
             }).catch(error => {
-                console.log(error)
+                if (error) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Email or password was wrong!",
+                        footer: '<a href="#">Why do I have this issue?</a>'
+                    });
+                }
             })
     };
 
