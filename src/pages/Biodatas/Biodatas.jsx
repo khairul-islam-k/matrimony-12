@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { Link } from 'react-router';
 
 const Biodatas = () => {
     const axiosSecure = useAxiosSecure();
@@ -95,7 +96,7 @@ const Biodatas = () => {
             {/* Biodata Cards Section */}
             <div className="lg:w-3/4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                 {filtered.map((biodata) => (
-                    <div key={biodata._id} className="border rounded-lg shadow-sm p-4 space-y-2">
+                    <div key={biodata._id} className={`border rounded-lg shadow-sm p-4 space-y-2 ${biodata.Biodata_Id ==='admin' && 'hidden'}`}>
                         <img
                             src={biodata.photoUrl}
                             alt={biodata.name}
@@ -107,9 +108,11 @@ const Biodatas = () => {
                         <p><strong>Division:</strong> {biodata.permanentDivision}</p>
                         <p><strong>Age:</strong> {biodata.age}</p>
                         <p><strong>Occupation:</strong> {biodata.occupation}</p>
-                        <button className="mt-2 px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
+                        <Link to={`/biodata/${biodata._id}`}>
+                        <button className="mt-2 px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 cursor-pointer">
                             View Profile
                         </button>
+                        </Link>
                     </div>
                 ))}
                 {filtered.length === 0 && (

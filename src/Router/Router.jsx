@@ -99,7 +99,7 @@ export const router = createBrowserRouter([
         element: <UserRout><ViewBiodata></ViewBiodata></UserRout>
       },
       {
-        path:'approvedContactRequest',
+        path: 'approvedContactRequest',
         element: <AdminRout><ApprovedRequest></ApprovedRequest></AdminRout>
       },
       {
@@ -115,5 +115,9 @@ export const router = createBrowserRouter([
         element: <AdminRout><PremiumApproval></PremiumApproval></AdminRout>
       }
     ]
+  },
+  {
+    path: '*',
+    Component: Forbidden
   }
 ]);

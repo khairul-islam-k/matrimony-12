@@ -1,5 +1,6 @@
 import React from 'react';
 import PremiumMembers from '../PremiumMembers/PremiumMembers';
+import HowItWorks from '../HowItWork/HowItWorks';
 
 const Home = () => {
     return (
@@ -14,6 +15,9 @@ const Home = () => {
 
             {/* premium members */}
             <PremiumMembers></PremiumMembers>
+
+            {/* how to work */}
+            <HowItWorks></HowItWorks>
 
         </div>
     );
