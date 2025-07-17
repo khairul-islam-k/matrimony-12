@@ -2,6 +2,7 @@ import React from 'react';
 import PremiumMembers from '../PremiumMembers/PremiumMembers';
 import HowItWorks from '../HowItWork/HowItWorks';
 import SuccessCounter from '../SuccessCountup/SuccessCounter';
+import SuccessStoryCarousel from '../SuccessStory/SuccessStoryCarousel';
 
 const Home = () => {
     return (
@@ -22,6 +23,8 @@ const Home = () => {
 
             {/* success countup */}
             <SuccessCounter></SuccessCounter>
+            {/* story */}
+            <SuccessStoryCarousel></SuccessStoryCarousel>
 
         </div>
     );

@@ -23,6 +23,7 @@ import ApprovedPremium from "../pages/dashboard/ApprovedPremium/ApprovedPremium"
 import PremiumApproval from "../pages/dashboard/PremiumAproval/PremiumApproval";
 import UserRout from "../Routes/UserRout";
 import MyContactApproval from "../pages/dashboard/Admin/MyContactApproval/MyContactApproval";
+import CreateGotMarried from "../pages/dashboard/CreateGotMarried/CreateGotMarried";
 
 
 export const router = createBrowserRouter([
@@ -97,6 +98,10 @@ export const router = createBrowserRouter([
       {
         path: 'viewBiodata',
         element: <UserRout><ViewBiodata></ViewBiodata></UserRout>
+      },
+      {
+        path: 'gotMarried',
+        element: <UserRout><CreateGotMarried></CreateGotMarried></UserRout>
       },
       {
         path: 'approvedContactRequest',

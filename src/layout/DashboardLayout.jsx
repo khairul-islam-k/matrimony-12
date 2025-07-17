@@ -33,8 +33,6 @@ const DashboardLayout = () => {
       myBiodata ? <li><NavLink to="/dashboard/editBiodata">Edit Biodata</NavLink></li> : <li><NavLink to="/dashboard/createBiodata">create Biodata</NavLink></li>
     }
 
-    {/* <li><NavLink to="/dashboard/createBiodata">create Biodata</NavLink></li> */}
-
 
     {
       myBiodata?.Biodata_Id === 'admin' && <>
@@ -51,6 +49,7 @@ const DashboardLayout = () => {
         <li><NavLink to="/dashboard/viewBiodata">View Biodata</NavLink></li>
         <li><NavLink to="/dashboard/favorite">My Favourites Biodata</NavLink></li>
         <li><NavLink to="/dashboard/myRequest">My Contact Request</NavLink></li>
+        <li><NavLink to="/dashboard/gotMarried">Create a Got Married</NavLink></li>
       </>
     }
 

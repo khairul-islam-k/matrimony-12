@@ -1,0 +1,8 @@
+.swiper-button-next,
+.swiper-button-prev {
+  color: #555; /* Make arrow visible */
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 9999px;
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}

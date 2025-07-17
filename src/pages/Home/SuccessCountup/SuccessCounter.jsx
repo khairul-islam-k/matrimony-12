@@ -5,15 +5,23 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Loader from '../../Shared/Loader/Loader';
 
-const SuccessCounter = ({ marriages = 0 }) => {
+const SuccessCounter = () => {
     const axiosSecure = useAxiosSecure();
     const [boysCount, setBoysCount] = useState(0);
     const [girlsCount, setGirlsCount] = useState(0);
 
-    const { data: biodata = {}, isLoading } = useQuery({
+    const { data: biodata = [], isLoading } = useQuery({
         queryKey: ["biodata"],
         queryFn: async () => {
             const res = await axiosSecure.get('/users');
+            return res.data;
+        },
+    });
+
+    const { data:marriages=[]  } = useQuery({
+        queryKey: ["marriages"],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/gotMarried');
             return res.data;
         },
     });
@@ -68,7 +76,7 @@ const SuccessCounter = ({ marriages = 0 }) => {
                     <FaHeart className="text-red-500 text-4xl mx-auto mb-3" />
                     <h3 className="text-xl font-semibold mb-1">Marriages Completed</h3>
                     <p className="text-3xl font-bold text-red-500">
-                        <CountUp end={marriages} duration={2.5} />
+                        <CountUp end={marriages.length} duration={2.5} />
                     </p>
                 </div>
 
