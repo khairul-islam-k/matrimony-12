@@ -41,6 +41,7 @@ const DashboardLayout = () => {
         <li><NavLink to="/dashboard/premiumApproval">premium Approval</NavLink></li>
         <li><NavLink to="/dashboard/approvedContactRequest">Approved contact request</NavLink></li>
         <li><NavLink to="/dashboard/myContactApproval">My Contact Approval</NavLink></li>
+        <li><NavLink to="/dashboard/successStory">success story</NavLink></li>
       </>
     }
 

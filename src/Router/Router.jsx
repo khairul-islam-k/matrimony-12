@@ -24,6 +24,9 @@ import PremiumApproval from "../pages/dashboard/PremiumAproval/PremiumApproval";
 import UserRout from "../Routes/UserRout";
 import MyContactApproval from "../pages/dashboard/Admin/MyContactApproval/MyContactApproval";
 import CreateGotMarried from "../pages/dashboard/CreateGotMarried/CreateGotMarried";
+import ContactUs from "../pages/ContactUs/ContactUs";
+import HomeDashboard from "../pages/dashboard/HomeDashboard/HomeDashboard";
+import SuccessStoryAdmin from "../pages/dashboard/Admin/SuccessStory/SuccessStoryAdmin";
 
 
 export const router = createBrowserRouter([
@@ -42,6 +45,10 @@ export const router = createBrowserRouter([
       {
         path: 'aboutUs',
         Component: AboutUs
+      },
+      {
+        path: 'contact',
+        Component: ContactUs
       },
       {
         path: 'biodata/:id',
@@ -75,6 +82,10 @@ export const router = createBrowserRouter([
     path: 'dashboard',
     element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
     children: [
+      {
+        index: true,
+        Component: HomeDashboard
+      },
       {
         path: 'createBiodata',
         Component: CreateBiodata
@@ -118,6 +129,10 @@ export const router = createBrowserRouter([
       {
         path: 'premiumApproval',
         element: <AdminRout><PremiumApproval></PremiumApproval></AdminRout>
+      },
+      {
+        path: 'successStory',
+        element: <AdminRout><SuccessStoryAdmin></SuccessStoryAdmin></AdminRout>
       }
     ]
   },
