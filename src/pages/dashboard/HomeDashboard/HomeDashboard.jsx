@@ -52,9 +52,12 @@ const HomeDashboard = () => {
             <h3 className='text-center lg:text-4xl font-bold text-2xl'>Welcome to {myBiodata.Biodata_Id} {myBiodata.name} </h3>
 
             {/* chart */}
-            <Chart
-            biodataCount={biodataCount}
-            ></Chart>
+            {
+                myBiodata?.Biodata_Id ==='admin' && <Chart
+                    biodataCount={biodataCount}
+                ></Chart>
+            }
+
         </div>
     );
 };

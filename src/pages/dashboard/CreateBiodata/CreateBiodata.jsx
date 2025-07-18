@@ -12,7 +12,6 @@ const CreateBiodata = () => {
   const {user} = useAuth();
   const navigate = useNavigate();
 
-  console.log(user);
 
   const {
     register,

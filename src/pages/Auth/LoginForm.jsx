@@ -17,7 +17,6 @@ const LoginForm = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log("Registration Data:", data);
         // Send data to your backend or API here
         loginUser(data.email, data.password)
             .then(result => {

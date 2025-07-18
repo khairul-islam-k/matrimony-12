@@ -9,7 +9,7 @@ const HowItWorks = () => {
                 <details className="border rounded-lg p-4">
                     <summary className="font-semibold cursor-pointer">1. How do I create a biodata?</summary>
                     <p className="mt-2 text-gray-600">
-                        You can create your biodata by registering an account and filling out the required information on the "Create Biodata" page.
+                        You can create your biodata by registering an account and then you have to go to create account on the dashboard and create biodata.
                     </p>
                 </details>
 
