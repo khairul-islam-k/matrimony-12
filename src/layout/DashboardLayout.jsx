@@ -27,6 +27,7 @@ const DashboardLayout = () => {
 
 
   const dashLink = <>
+  <NavLogo></NavLogo>
     <li><NavLink to="/dashboard">Home</NavLink></li>
 
     {
@@ -38,10 +39,11 @@ const DashboardLayout = () => {
       myBiodata?.Biodata_Id === 'admin' && <>
         <li><NavLink to="/dashboard/manage">Manage User</NavLink></li>
         <li><NavLink to="/dashboard/approvedPremium">Approved premium</NavLink></li>
-        <li><NavLink to="/dashboard/premiumApproval">premium Approval</NavLink></li>
+        <li><NavLink to="/dashboard/premiumApproval">My premium Approval</NavLink></li>
         <li><NavLink to="/dashboard/approvedContactRequest">Approved contact request</NavLink></li>
         <li><NavLink to="/dashboard/myContactApproval">My Contact Approval</NavLink></li>
         <li><NavLink to="/dashboard/successStory">success story</NavLink></li>
+        <li><NavLink to="/dashboard/table">demo table</NavLink></li>
       </>
     }
 
@@ -62,56 +64,45 @@ const DashboardLayout = () => {
   </>
 
   return (
-    <div className="flex overflow-hidden h-screen">
-      {/* Sidebar for large screens */}
-      <div className="hidden lg:flex lg:flex-col w-64 bg-gray-100 p-4 shadow ">
+    <div className="drawer lg:drawer-open">
+            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content flex flex-col">
 
-        {/* logo */}
-        <NavLogo></NavLogo>
-
-        <ul className="space-y-2">
-          {dashLink}
-        </ul>
-      </div>
-
-      {/* Sidebar for mobile */}
-      {sidebarOpen && (
-        <div className="fixed inset-0 z-40 flex lg:hidden">
-          <div className="w-64 bg-white p-4 shadow-lg">
-            <div className="flex justify-between items-center mb-6">
-
-              {/* logo */}
-              <NavLogo></NavLogo>
-
-              <button onClick={() => setSidebarOpen(false)}>
-                <IoClose size={24} />
-              </button>
+                {/* Navbar */}
+                <div className="navbar bg-base-300 w-full  lg:hidden">
+                    <div className="flex-none">
+                        <label htmlFor="my-drawer-2" aria-label="open sidebar" className="btn btn-square btn-ghost">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                className="inline-block h-6 w-6 stroke-current"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M4 6h16M4 12h16M4 18h16"
+                                ></path>
+                            </svg>
+                        </label>
+                    </div>
+                    <div className="mx-2 flex-1 px-2">Navbar Title</div>
+                </div>
+                {/* Page content here */}
+                <Outlet></Outlet>
+                {/* Page content here */}
             </div>
-            <ul className="space-y-2">
-              {dashLink}
-            </ul>
-          </div>
-          <div className="flex-1 bg-black bg-opacity-40" onClick={() => setSidebarOpen(false)} />
+            <div className="drawer-side">
+                <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
+                <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+                    {/* Sidebar content here */}
+                    {/* <ProFastLogo></ProFastLogo> */}
+                    {dashLink}
+
+                </ul>
+            </div>
         </div>
-      )}
-
-      {/* Main content area */}
-      <div className="flex-1 flex flex-col">
-        {/* Mobile navbar */}
-        <div className="lg:hidden bg-gray-200 p-4 flex items-center justify-between shadow">
-          <button onClick={() => setSidebarOpen(true)}>
-            <FiMenu size={24} />
-          </button>
-
-          <h1 className="text-xl font-semibold">Dashboard</h1>
-        </div>
-
-        {/* Page content */}
-        <main className="flex-1 overflow-auto p-4 bg-[#d6edf1]">
-          <Outlet />
-        </main>
-      </div>
-    </div>
   );
 };
 

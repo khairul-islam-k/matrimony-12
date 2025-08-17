@@ -49,7 +49,7 @@ const HomeDashboard = () => {
     }
     return (
         <div>
-            <h3 className='text-center lg:text-4xl font-bold text-2xl'>Welcome to {myBiodata.Biodata_Id} {myBiodata.name} </h3>
+            <h3 className='text-center lg:text-4xl font-bold text-xl'>Welcome to {myBiodata.Biodata_Id} {myBiodata.name} </h3>
 
             {/* chart */}
             {

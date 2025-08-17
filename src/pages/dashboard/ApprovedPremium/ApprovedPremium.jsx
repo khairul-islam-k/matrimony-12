@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Loader from '../../Shared/Loader/Loader';
 
 const ApprovedPremium = () => {
   const axiosSecure = useAxiosSecure();
@@ -42,10 +43,11 @@ const ApprovedPremium = () => {
     });
   };
 
-  if (isLoading) return <div className="text-center py-10">Loading...</div>;
-
+  if (isLoading) {
+    return <Loader></Loader>
+  }
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <div className="px-4 py-10">
       <h2 className="text-2xl font-bold text-center mb-6">Premium Approval Requests</h2>
 
       <div className="overflow-x-auto">

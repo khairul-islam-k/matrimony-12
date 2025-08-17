@@ -40,7 +40,7 @@ const ManageUser = () => {
     //console.log(filterUser);
 
     const handleSearch = (e) => {
-    
+
         const filterUser = users.filter(user => user.name.toLowerCase().includes(e.target.value.toLowerCase()));
         setSearch(filterUser);
     }
@@ -51,66 +51,34 @@ const ManageUser = () => {
 
 
     return (
-        <div className="overflow-x-auto max-w-5xl mx-auto py-10 px-4">
+        <div className="px-4">
+
             <h2 className="text-3xl font-bold text-center mb-6">Manage Users</h2>
 
             {/* search */}
             <div className="w-full max-w-sm mx-auto">
                 <input
                     type="text"
-                    //value={value}
                     onChange={handleSearch}
                     placeholder="search your choice"
                     className="w-full px-4 py-2 border bg-white border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 mb-10"
                 />
             </div>
 
-            <table className="w-full table-auto border border-gray-300 text-left shadow">
-                <thead className="bg-gray-100">
-                    <tr>
-                        <th className="p-3 border">Name</th>
-                        <th className="p-3 border">Email</th>
-                        <th className="p-3 border text-center">Make Admin</th>
-                        <th className="p-3 border text-center">Make Premium</th>
-                    </tr>
-                </thead>
+            <div className='overflow-auto'>
+                <table className="w-full table-auto border border-gray-300 text-left shadow">
+                    <thead className="bg-gray-100">
+                        <tr>
+                            <th className="p-3 border">Name</th>
+                            <th className="p-3 border">Email</th>
+                            <th className="p-3 border text-center">Make Admin</th>
+                            <th className="p-3 border text-center">Make Premium</th>
+                        </tr>
+                    </thead>
 
-                {
-                    search.length > 0 ? <tbody>
-                        {search.map((user) => (
-                            <tr key={user._id} className="hover:bg-gray-50">
-                                <td className="p-3 border">{user.name}</td>
-                                <td className="p-3 border">{user.email}</td>
-                                <td className="p-3 border text-center">
-                                    {user.Biodata_Id === 'admin' ? (
-                                        <span className="text-green-600 font-semibold">Admin</span>
-                                    ) : (
-                                        <button
-                                            onClick={() => makeAdmin.mutate(user._id)}
-                                            className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 text-sm cursor-pointer"
-                                        >
-                                            Make Admin
-                                        </button>
-                                    )}
-                                </td>
-                                <td className="p-3 border text-center">
-                                    {user.role === 'premium' ? (
-                                        <span className="text-yellow-600 font-semibold">Premium</span>
-                                    ) : (
-                                        <button
-                                            onClick={() => makePremium.mutate(user._id)}
-                                            className="bg-purple-500 text-white px-4 py-1 rounded hover:bg-purple-600 text-sm cursor-pointer"
-                                        >
-                                            Make Premium
-                                        </button>
-                                    )}
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody> :
-
-                        <tbody>
-                            {users.map((user) => (
+                    {
+                        search.length > 0 ? <tbody>
+                            {search.map((user) => (
                                 <tr key={user._id} className="hover:bg-gray-50">
                                     <td className="p-3 border">{user.name}</td>
                                     <td className="p-3 border">{user.email}</td>
@@ -140,12 +108,48 @@ const ManageUser = () => {
                                     </td>
                                 </tr>
                             ))}
-                        </tbody>
+                        </tbody> :
+
+                            <tbody>
+                                {users.map((user) => (
+                                    <tr key={user._id} className="hover:bg-gray-50">
+                                        <td className="p-3 border">{user.name}</td>
+                                        <td className="p-3 border">{user.email}</td>
+                                        <td className="p-3 border text-center">
+                                            {user.Biodata_Id === 'admin' ? (
+                                                <span className="text-green-600 font-semibold">Admin</span>
+                                            ) : (
+                                                <button
+                                                    onClick={() => makeAdmin.mutate(user._id)}
+                                                    className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 text-sm cursor-pointer"
+                                                >
+                                                    Make Admin
+                                                </button>
+                                            )}
+                                        </td>
+                                        <td className="p-3 border text-center">
+                                            {user.role === 'premium' ? (
+                                                <span className="text-yellow-600 font-semibold">Premium</span>
+                                            ) : (
+                                                <button
+                                                    onClick={() => makePremium.mutate(user._id)}
+                                                    className="bg-purple-500 text-white px-4 py-1 rounded hover:bg-purple-600 text-sm cursor-pointer"
+                                                >
+                                                    Make Premium
+                                                </button>
+                                            )}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
 
 
-                }
+                    }
 
-            </table>
+                </table>
+            </div>
+
+
         </div>
     );
 };

@@ -32,7 +32,7 @@ const SuccessStoryAdmin = () => {
   }
 
   return (
-    <div className="p-4">
+    <div className="px-4 py-10">
       <h2 className="text-2xl font-semibold mb-4">Success Stories</h2>
       <div className="overflow-x-auto">
         <table className="w-full border border-gray-200 text-left">

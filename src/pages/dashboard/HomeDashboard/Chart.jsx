@@ -5,7 +5,8 @@ import {
   Pie,
   Cell,
   Tooltip,
-  Legend
+  Legend,
+  ResponsiveContainer
 } from "recharts";
 
 
@@ -36,7 +37,8 @@ const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const Chart = ({biodataCount:data}) => {
   return (
-    <div className="w-full flex justify-center items-center p-4">
+    <div className="w-[370px] h-[370px] border">
+      <ResponsiveContainer width="100%" height="100%">
       <PieChart width={400} height={400}>
         <Pie
           data={data}
@@ -58,6 +60,7 @@ const Chart = ({biodataCount:data}) => {
         <Tooltip />
         <Legend />
       </PieChart>
+      </ResponsiveContainer>
     </div>
   );
 };
