@@ -101,7 +101,7 @@ const CreateBiodata = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto bg-white p-8 shadow rounded">
+    <div className="max-w-4xl mx-auto bg-base-300 p-8 shadow rounded">
       <h2 className="text-2xl font-bold text-center mb-6">Create Biodata</h2>
       <p className='mb-7'>If the height and width of the image are equal, the image will be good or it will be a little problematic. Like 600*600</p>
 
@@ -278,7 +278,7 @@ const CreateBiodata = () => {
             defaultValue={user?.email}
             readOnly
             {...register("email")}
-            className="w-full border rounded px-3 py-2 bg-gray-100"
+            className="w-full border rounded px-3 py-2"
           />
         </div>
 

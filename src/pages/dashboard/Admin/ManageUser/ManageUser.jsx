@@ -61,13 +61,13 @@ const ManageUser = () => {
                     type="text"
                     onChange={handleSearch}
                     placeholder="search your choice"
-                    className="w-full px-4 py-2 border bg-white border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 mb-10"
+                    className="w-full px-4 py-2 border bg-base-300 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 mb-10"
                 />
             </div>
 
             <div className='overflow-auto'>
                 <table className="w-full table-auto border border-gray-300 text-left shadow">
-                    <thead className="bg-gray-100">
+                    <thead className="bg-gray-100 text-black">
                         <tr>
                             <th className="p-3 border">Name</th>
                             <th className="p-3 border">Email</th>
@@ -79,7 +79,7 @@ const ManageUser = () => {
                     {
                         search.length > 0 ? <tbody>
                             {search.map((user) => (
-                                <tr key={user._id} className="hover:bg-gray-50">
+                                <tr key={user._id} className="hover:bg-gray-50 hover:text-black">
                                     <td className="p-3 border">{user.name}</td>
                                     <td className="p-3 border">{user.email}</td>
                                     <td className="p-3 border text-center">
@@ -112,7 +112,7 @@ const ManageUser = () => {
 
                             <tbody>
                                 {users.map((user) => (
-                                    <tr key={user._id} className="hover:bg-gray-50">
+                                    <tr key={user._id} className="hover:bg-gray-50 hover:text-black">
                                         <td className="p-3 border">{user.name}</td>
                                         <td className="p-3 border">{user.email}</td>
                                         <td className="p-3 border text-center">

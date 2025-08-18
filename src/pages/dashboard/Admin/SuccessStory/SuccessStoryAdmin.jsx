@@ -44,9 +44,10 @@ const SuccessStoryAdmin = () => {
               <th className="p-2 border">Action</th>
             </tr>
           </thead>
+
           <tbody>
             {successStories.map((story, index) => (
-              <tr key={story._id} className="hover:bg-gray-50">
+              <tr key={story._id} className="hover:bg-gray-50 hover:text-black">
                 <td className="p-2 border">{index + 1}</td>
                 <td className="p-2 border">{story.userId}</td>
                 <td className="p-2 border">{story.partnerBiodataId}</td>
@@ -67,7 +68,7 @@ const SuccessStoryAdmin = () => {
       {/* Modal */}
       {isModalOpen && selectedStory && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
-          <div className="bg-white max-w-lg w-full p-6 rounded-lg shadow-xl relative">
+          <div className="bg-base-300 max-w-lg w-full p-6 rounded-lg shadow-xl relative">
             <button
               onClick={closeModal}
               className="absolute top-2 right-2 text-gray-500 hover:text-black text-xl"
@@ -84,7 +85,7 @@ const SuccessStoryAdmin = () => {
               Marriage Date:{' '}
               {new Date(selectedStory.createdAt).toLocaleDateString()}
             </p>
-            <p className="text-gray-700">{selectedStory.review}</p>
+            <p className="text-gray-500">{selectedStory.review}</p>
           </div>
         </div>
       )}

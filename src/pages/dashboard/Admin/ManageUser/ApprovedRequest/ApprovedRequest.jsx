@@ -57,7 +57,7 @@ const ApprovedRequest = () => {
 
             <div className="overflow-x-auto">
                 <table className="min-w-full border text-sm md:text-base">
-                    <thead className="bg-gray-100">
+                    <thead className="bg-gray-100 text-black">
                         <tr>
                             <th className="p-3 border">Name</th>
                             <th className="p-3 border">Email</th>
@@ -70,7 +70,7 @@ const ApprovedRequest = () => {
                         {requests.map((req) => (
                             
 
-                            <tr key={req._id} className="hover:bg-gray-50">
+                            <tr key={req._id} className="hover:bg-gray-50 hover:text-black">
                                 <td className="p-3 border">{req.biodataName}</td>
                                 <td className="p-3 border">{req.biodataEmail}</td>
                                 <td className="p-3 border">{req.biodataId}</td>

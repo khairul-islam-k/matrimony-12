@@ -52,7 +52,7 @@ const ApprovedPremium = () => {
 
       <div className="overflow-x-auto">
         <table className="min-w-full border text-sm md:text-base">
-          <thead className="bg-gray-100">
+          <thead className="bg-gray-100 text-black">
             <tr>
               <th className="p-3 border">Name</th>
               <th className="p-3 border">Email</th>
@@ -62,7 +62,7 @@ const ApprovedPremium = () => {
           </thead>
           <tbody>
             {pendingPremiums.map((bio) => (
-              <tr key={bio._id} className="hover:bg-gray-50">
+              <tr key={bio._id} className="hover:bg-gray-50 hover:text-black">
                 <td className="p-3 border">{bio.name}</td>
                 <td className="p-3 border">{bio.email}</td>
                 <td className="p-3 border">{bio._id}</td>

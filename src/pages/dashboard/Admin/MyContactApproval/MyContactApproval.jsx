@@ -23,7 +23,7 @@ const MyContactApproval = () => {
 
       <div className="overflow-x-auto">
         <table className="min-w-full border text-sm md:text-base">
-          <thead className="bg-gray-100">
+          <thead className="bg-gray-100 text-black">
             <tr>              
               <th className="p-3 border">Name</th>
               <th className="p-3 border">Biodata Email</th>
@@ -34,7 +34,7 @@ const MyContactApproval = () => {
           </thead>
           <tbody>
             {approvals.map((item) => (
-              <tr key={item._id} className="hover:bg-gray-50">
+              <tr key={item._id} className="hover:bg-gray-50 hover:text-black">
                 <td className="p-3 border">{item.biodataName}</td>
                 <td className="p-3 border">{item.biodataEmail}</td>
                 <td className="p-3 border">${item.amount}</td>
