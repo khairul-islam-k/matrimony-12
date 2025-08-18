@@ -54,7 +54,7 @@ const MyFavoriteBiodata = () => {
 
       <div className="overflow-x-auto">
         <table className="min-w-full text-sm border">
-          <thead className="bg-gray-100">
+          <thead className="bg-gray-100 text-black">
             <tr>
               <th className="p-3 border">Name</th>
               <th className="p-3 border">Biodata ID</th>
@@ -65,7 +65,7 @@ const MyFavoriteBiodata = () => {
           </thead>
           <tbody>
             {favorites.map((fav) => (
-              <tr key={fav._id} className="hover:bg-gray-50">
+              <tr key={fav._id} className="hover:bg-gray-50 hover:text-black">
                 <td className="p-3 border">{fav.biodataName}</td>
                 <td className="p-3 border">{fav.biodataId}</td>
                 <td className="p-3 border">{fav.BiodataAddress}</td>

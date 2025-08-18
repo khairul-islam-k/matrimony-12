@@ -92,7 +92,7 @@ const DashboardLayout = () => {
                             </svg>
                         </label>
                     </div>
-                    <div className="mx-2 flex-1 px-2">Navbar Title</div>
+                    <div className="mx-2 flex-1 px-2">DashBoard</div>
                 </div>
                 {/* Page content here */}
                 <Outlet></Outlet>

@@ -111,9 +111,9 @@ const CreateBiodata = () => {
         <div>
           <label className="block font-medium mb-1">Biodata Type*</label>
           <select {...register("biodataType", { required: true })} className="w-full border rounded px-3 py-2">
-            <option value="">Select Type</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
+            <option className='text-black' value="">Select Type</option>
+            <option className='text-black' value="Male">Male</option>
+            <option className='text-black' value="Female">Female</option>
           </select>
           {errors.biodataType && <p className="text-red-500 text-sm">Biodata Type is required</p>}
         </div>
@@ -126,7 +126,6 @@ const CreateBiodata = () => {
             {...register("name", { required: true })}
             className="w-full border rounded px-3 py-2"
             defaultValue={user?.displayName}
-            readOnly
           />
           {errors.name && <p className="text-red-500 text-sm">Name is required</p>}
         </div>
@@ -138,6 +137,7 @@ const CreateBiodata = () => {
             type="file"
             onChange={handleImageUpload}
             className="w-full border rounded px-3 py-2"
+            required
           />
         </div>
 
@@ -156,9 +156,9 @@ const CreateBiodata = () => {
         <div>
           <label className="block font-medium mb-1">Height*</label>
           <select {...register("height", { required: true })} className="w-full border rounded px-3 py-2">
-            <option value="">Select Height</option>
+            <option className='text-black' value="">Select Height</option>
             {options.height.map((h, i) => (
-              <option key={i} value={h}>{h}</option>
+              <option className='text-black' key={i} value={h}>{h}</option>
             ))}
           </select>
           {errors.height && <p className="text-red-500 text-sm">Height is required</p>}
@@ -168,9 +168,9 @@ const CreateBiodata = () => {
         <div>
           <label className="block font-medium mb-1">Weight*</label>
           <select {...register("weight", { required: true })} className="w-full border rounded px-3 py-2">
-            <option value="">Select Weight</option>
+            <option className='text-black' value="">Select Weight</option>
             {options.weight.map((w, i) => (
-              <option key={i} value={w}>{w}</option>
+              <option className='text-black' key={i} value={w}>{w}</option>
             ))}
           </select>
           {errors.weight && <p className="text-red-500 text-sm">Weight is required</p>}
@@ -190,9 +190,9 @@ const CreateBiodata = () => {
         <div>
           <label className="block font-medium mb-1">Occupation*</label>
           <select {...register("occupation", { required: true })} className="w-full border rounded px-3 py-2">
-            <option value="">Select Occupation</option>
+            <option className='text-black' value="">Select Occupation</option>
             {options.occupation.map((o, i) => (
-              <option key={i} value={o}>{o}</option>
+              <option className='text-black' key={i} value={o}>{o}</option>
             ))}
           </select>
           {errors.occupation && <p className="text-red-500 text-sm">Occupation is required</p>}
@@ -202,9 +202,9 @@ const CreateBiodata = () => {
         <div>
           <label className="block font-medium mb-1">Race (Skin Color)*</label>
           <select {...register("race", { required: true })} className="w-full border rounded px-3 py-2">
-            <option value="">Select Skin Color</option>
+            <option className='text-black' value="">Select Skin Color</option>
             {options.race.map((r, i) => (
-              <option key={i} value={r}>{r}</option>
+              <option className='text-black' key={i} value={r}>{r}</option>
             ))}
           </select>
           {errors.race && <p className="text-red-500 text-sm">Race is required</p>}
@@ -224,9 +224,9 @@ const CreateBiodata = () => {
         <div>
           <label className="block font-medium mb-1">Permanent Division*</label>
           <select {...register("permanentDivision", { required: true })} className="w-full border rounded px-3 py-2">
-            <option value="">Select</option>
+            <option className='text-black' value="">Select</option>
             {divisions.map((d, i) => (
-              <option key={i} value={d}>{d}</option>
+              <option className='text-black' key={i} value={d}>{d}</option>
             ))}
           </select>
         </div>
@@ -235,9 +235,9 @@ const CreateBiodata = () => {
         <div>
           <label className="block font-medium mb-1">Present Division*</label>
           <select {...register("presentDivision", { required: true })} className="w-full border rounded px-3 py-2">
-            <option value="">Select</option>
+            <option className='text-black' value="">Select</option>
             {divisions.map((d, i) => (
-              <option key={i} value={d}>{d}</option>
+              <option className='text-black' key={i} value={d}>{d}</option>
             ))}
           </select>
         </div>
@@ -252,9 +252,9 @@ const CreateBiodata = () => {
         <div>
           <label className="block font-medium mb-1">Expected Partner Height*</label>
           <select {...register("expectedPartnerHeight", { required: true })} className="w-full border rounded px-3 py-2">
-            <option value="">Select</option>
+            <option className='text-black' value="">Select</option>
             {options.height.map((h, i) => (
-              <option key={i} value={h}>{h}</option>
+              <option className='text-black' key={i} value={h}>{h}</option>
             ))}
           </select>
         </div>
@@ -263,9 +263,9 @@ const CreateBiodata = () => {
         <div>
           <label className="block font-medium mb-1">Expected Partner Weight*</label>
           <select {...register("expectedPartnerWeight", { required: true })} className="w-full border rounded px-3 py-2">
-            <option value="">Select</option>
+            <option className='text-black' value="">Select</option>
             {options.weight.map((w, i) => (
-              <option key={i} value={w}>{w}</option>
+              <option className='text-black' key={i} value={w}>{w}</option>
             ))}
           </select>
         </div>

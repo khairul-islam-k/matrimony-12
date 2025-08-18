@@ -89,14 +89,14 @@ const CheckoutForm = () => {
     return <Loader></Loader>
   }
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 rounded shadow space-y-4">
+    <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-base-300 p-6 rounded shadow space-y-4">
       <div>
         <label className="block mb-1 font-semibold">Biodata ID</label>
         <input
           type="text"
           value={id}
           readOnly
-          className="w-full border px-3 py-2 rounded bg-gray-100 text-gray-600"
+          className="w-full border px-3 py-2 rounded text-neutral-content"
         />
       </div>
 
@@ -106,13 +106,13 @@ const CheckoutForm = () => {
           type="email"
           value={myBiodata.email}
           readOnly
-          className="w-full border px-3 py-2 rounded bg-gray-100 text-gray-600"
+          className="w-full border px-3 py-2 rounded text-neutral-content"
         />
       </div>
 
       <div>
         <label className="block mb-1 font-semibold">Card Information</label>
-        <div className="border p-3 rounded">
+        <div className="border p-3 rounded bg-white">
           <CardElement
             options={{
               style: {

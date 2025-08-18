@@ -129,9 +129,9 @@ const EditBiodata = () => {
                     <select {...register("biodataType", { required: true })}
                         defaultValue={myBiodata.biodataType}
                         className="w-full border rounded px-3 py-2">
-                        <option value="">Select Type</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                        <option className='text-black' value="">Select Type</option>
+                        <option className='text-black' value="Male">Male</option>
+                        <option className='text-black' value="Female">Female</option>
                     </select>
                     {errors.biodataType && <p className="text-red-500 text-sm">Biodata Type is required</p>}
                 </div>
@@ -144,7 +144,6 @@ const EditBiodata = () => {
                         {...register("name", { required: true })}
                         className="w-full border rounded px-3 py-2"
                         defaultValue={user?.displayName}
-                        readOnly
                     />
                     {errors.name && <p className="text-red-500 text-sm">Name is required</p>}
                 </div>
@@ -177,9 +176,9 @@ const EditBiodata = () => {
                     <select {...register("height", { required: true })}
                         defaultValue={myBiodata.height}
                         className="w-full border rounded px-3 py-2">
-                        <option value="">Select Height</option>
+                        <option className='text-black' value="">Select Height</option>
                         {options.height.map((h, i) => (
-                            <option key={i} value={h}>{h}</option>
+                            <option className='text-black' key={i} value={h}>{h}</option>
                         ))}
                     </select>
                     {errors.height && <p className="text-red-500 text-sm">Height is required</p>}
@@ -191,9 +190,9 @@ const EditBiodata = () => {
                     <select {...register("weight", { required: true })}
                         defaultValue={myBiodata.weight}
                         className="w-full border rounded px-3 py-2">
-                        <option value="">Select Weight</option>
+                        <option className='text-black' value="">Select Weight</option>
                         {options.weight.map((w, i) => (
-                            <option key={i} value={w}>{w}</option>
+                            <option className='text-black' key={i} value={w}>{w}</option>
                         ))}
                     </select>
                     {errors.weight && <p className="text-red-500 text-sm">Weight is required</p>}
@@ -216,9 +215,9 @@ const EditBiodata = () => {
                     <select {...register("occupation", { required: true })}
                         defaultValue={myBiodata.occupation}
                         className="w-full border rounded px-3 py-2">
-                        <option value="">Select Occupation</option>
+                        <option className='text-black' value="">Select Occupation</option>
                         {options.occupation.map((o, i) => (
-                            <option key={i} value={o}>{o}</option>
+                            <option className='text-black' key={i} value={o}>{o}</option>
                         ))}
                     </select>
                     {errors.occupation && <p className="text-red-500 text-sm">Occupation is required</p>}
@@ -230,9 +229,9 @@ const EditBiodata = () => {
                     <select {...register("race", { required: true })}
                         defaultValue={myBiodata.race}
                         className="w-full border rounded px-3 py-2">
-                        <option value="">Select Skin Color</option>
+                        <option className='text-black' value="">Select Skin Color</option>
                         {options.race.map((r, i) => (
-                            <option key={i} value={r}>{r}</option>
+                            <option className='text-black' key={i} value={r}>{r}</option>
                         ))}
                     </select>
                     {errors.race && <p className="text-red-500 text-sm">Race is required</p>}
@@ -258,9 +257,9 @@ const EditBiodata = () => {
                     <select {...register("permanentDivision", { required: true })}
                         defaultValue={myBiodata.permanentDivision}
                         className="w-full border rounded px-3 py-2">
-                        <option value="">Select</option>
+                        <option className='text-black' value="">Select</option>
                         {divisions.map((d, i) => (
-                            <option key={i} value={d}>{d}</option>
+                            <option className='text-black' key={i} value={d}>{d}</option>
                         ))}
                     </select>
                 </div>
@@ -271,9 +270,9 @@ const EditBiodata = () => {
                     <select {...register("presentDivision", { required: true })}
                         defaultValue={myBiodata.presentDivision}
                         className="w-full border rounded px-3 py-2">
-                        <option value="">Select</option>
+                        <option className='text-black' value="">Select</option>
                         {divisions.map((d, i) => (
-                            <option key={i} value={d}>{d}</option>
+                            <option className='text-black' key={i} value={d}>{d}</option>
                         ))}
                     </select>
                 </div>
@@ -292,9 +291,9 @@ const EditBiodata = () => {
                     <select {...register("expectedPartnerHeight", { required: true })}
                         defaultValue={myBiodata.expectedPartnerHeight}
                         className="w-full border rounded px-3 py-2">
-                        <option value="">Select</option>
+                        <option className='text-black' value="">Select</option>
                         {options.height.map((h, i) => (
-                            <option key={i} value={h}>{h}</option>
+                            <option className='text-black' key={i} value={h}>{h}</option>
                         ))}
                     </select>
                 </div>
@@ -305,9 +304,9 @@ const EditBiodata = () => {
                     <select {...register("expectedPartnerWeight", { required: true })}
                         defaultValue={myBiodata.expectedPartnerWeight}
                         className="w-full border rounded px-3 py-2">
-                        <option value="">Select</option>
+                        <option className='text-black' value="">Select</option>
                         {options.weight.map((w, i) => (
-                            <option key={i} value={w}>{w}</option>
+                            <option className='text-black' key={i} value={w}>{w}</option>
                         ))}
                     </select>
                 </div>

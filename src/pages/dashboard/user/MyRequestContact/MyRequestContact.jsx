@@ -57,7 +57,7 @@ const MyRequestContact = () => {
 
   <div className="overflow-auto">
     <table className="min-w-full border text-sm md:text-base">
-      <thead className="bg-gray-100">
+      <thead className="bg-gray-100 text-black">
         <tr>
           <th className="p-3 border">Name</th>
           <th className="p-3 border">Biodata ID</th>
@@ -69,7 +69,7 @@ const MyRequestContact = () => {
       </thead>
       <tbody>
         {requests.map((req) => (
-          <tr key={req._id} className="hover:bg-gray-50">
+          <tr key={req._id} className="hover:bg-gray-50 hover:text-black">
             <td className="p-3 border">{req.biodataName}</td>
             <td className="p-3 border">{req.biodataId}</td>
             <td className="p-3 border">

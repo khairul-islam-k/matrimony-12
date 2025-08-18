@@ -73,7 +73,7 @@ const BiodataDetails = () => {
 
             {/* Info Grid */}
             <h2 className="text-3xl font-bold mb-6 text-center text-blue-600">{biodata.name}</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-800">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-neutral">
                 <p><span className="font-semibold">Biodata Type:</span> {biodata.biodataType}</p>
                 <p><span className="font-semibold">Date of Birth:</span> {new Date(biodata.dob).toLocaleDateString()}</p>
                 <p><span className="font-semibold">Height:</span> {biodata.height}</p>
@@ -129,7 +129,7 @@ const BiodataDetails = () => {
                         {similar.map((item) => (
                             <div
                                 key={item._id}
-                                className="bg-white shadow rounded-lg overflow-hidden"
+                                className="bg-base-300 shadow rounded-lg overflow-hidden"
                             >
                                 <img
                                     src={item.photoUrl}
