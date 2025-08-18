@@ -65,7 +65,7 @@ const Biodatas = () => {
     }, [ageRange, typeFilter, divisionFilter, biodatas]);
 
     return (
-        <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto px-4 py-10">
+        <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto px-4 pb-10 pt-25">
             {/* Filter Panel */}
             <div className="lg:w-1/4 w-full space-y-4 border rounded-lg p-4 shadow-sm h-fit bg-base-300">
                 <h2 className="text-xl font-bold mb-2">Filter Biodatas</h2>

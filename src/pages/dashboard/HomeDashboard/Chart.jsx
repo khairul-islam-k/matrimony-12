@@ -37,7 +37,7 @@ const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const Chart = ({biodataCount:data}) => {
   return (
-    <div className="w-[370px] h-[370px] border">
+    <div className="w-[370px] h-[370px] mx-auto">
       <ResponsiveContainer width="100%" height="100%">
       <PieChart width={400} height={400}>
         <Pie

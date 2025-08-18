@@ -10,8 +10,8 @@ const MainLayout = () => {
     },[])
     return (
         <div className='bg-base-100 '>
+            <Navbar></Navbar>
             <div className='w-11/12 mx-auto'>
-                <Navbar></Navbar>
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>

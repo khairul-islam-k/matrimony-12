@@ -135,10 +135,6 @@ export const router = createBrowserRouter([
         path: 'successStory',
         element: <AdminRout><SuccessStoryAdmin></SuccessStoryAdmin></AdminRout>
       },
-      {
-        path: 'table',
-        Component:Demo
-      }
     ]
   },
   {

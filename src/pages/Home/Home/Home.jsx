@@ -23,7 +23,7 @@ const Home = () => {
 
     
     return (
-        <div>
+        <div className='pt-12'>
             {/* theme */}
             <div className='flex justify-end p-4'>
                 <div>
