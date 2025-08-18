@@ -10,10 +10,12 @@ const axiosInstance = axios.create({
 const useAxiosSecure = () => {
   const {user} = useAuth();
 
-  axiosInstance.interceptors.request.use(config => {
+  if (user) {
+    axiosInstance.interceptors.request.use(config => {
     config.headers.authorization = `Bearer ${user?.accessToken}`;
     return config;
   })
+  }
 
   return axiosInstance;
 };

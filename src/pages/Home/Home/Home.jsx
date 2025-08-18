@@ -21,7 +21,6 @@ const Home = () => {
         document.querySelector('html').setAttribute("data-theme", localTheme);
     },[theme])
 
-    console.log(theme)
     
     return (
         <div>
