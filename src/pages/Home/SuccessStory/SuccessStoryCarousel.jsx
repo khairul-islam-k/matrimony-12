@@ -71,17 +71,17 @@ const SuccessStoryCarousel = () => {
             >
                 {successStories.map((story) => (
                     <SwiperSlide key={story._id}>
-                        <div className="bg-white shadow-lg rounded-2xl p-5 h-full flex flex-col justify-between text-center">
+                        <div className="bg-base-300 shadow-lg rounded-2xl p-5 h-full flex flex-col justify-between text-center">
                             <img
                                 src={story.coupleImage || '/default-couple.png'}
                                 alt="Couple"
                                 className=" mx-auto mb-4 border-4 border-pink-200"
                             />
-                            <p className="text-sm text-gray-500 mb-2">
+                            <p className="text-sm mb-2">
                                 Married on {new Date(story.createdAt).toLocaleDateString()}
                             </p>
                             <div className="flex justify-center mb-2">{renderStars(story.rating)}</div>
-                            <p className="text-gray-700 text-sm">{story.review}</p>
+                            <p className="text-sm">{story.review}</p>
                         </div>
                     </SwiperSlide>
                 ))}

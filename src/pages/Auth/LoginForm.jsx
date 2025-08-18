@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router';
 import useAuth from '../../hooks/useAuth';
@@ -10,8 +10,10 @@ const LoginForm = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
+
     const {
         register,
+        setValue,
         handleSubmit,
         formState: { errors },
     } = useForm();
@@ -24,7 +26,7 @@ const LoginForm = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "Your work has been saved",
+                    title: "Login has been successfully",
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -41,16 +43,32 @@ const LoginForm = () => {
             })
     };
 
+    const handleAdmin = () => {
+        setValue("email",'riyad@gmail.com');
+        setValue("password",'123456');
+        //setPassword("123456");
+    }
+
+    const handleUser = () => {
+        setValue("email",'aysha@gmail.com');
+        setValue("password",'123456');
+        //setPassword("123456");
+    }
+
     return (
-        <div className="w-full md:w-1/2 max-w-md p-8 bg-white rounded shadow">
+        <div className="w-full md:w-1/2 max-w-md p-8 bg-base-300 rounded shadow">
             <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+            <div className='flex gap-3 justify-center mb-2'>
+                <button onClick={handleAdmin} className='btn btn-primary'>admin login</button>
+                <button onClick={handleUser} className='btn btn-secondary'>user login</button>
+            </div>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
                 {/* Email */}
                 <div>
                     <label className="block mb-1 font-medium">Email</label>
                     <input
-                        type="email"
+                    type='email'
                         {...register("email", { required: "Email is required" })}
                         className="w-full px-4 py-2 border rounded"
                         placeholder="you@example.com"
@@ -62,7 +80,7 @@ const LoginForm = () => {
                 <div>
                     <label className="block mb-1 font-medium">Password</label>
                     <input
-                        type="password"
+                    type='password'
                         {...register("password", {
                             required: "Password is required",
                             minLength: { value: 6, message: "Minimum 6 characters" },

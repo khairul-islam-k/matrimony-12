@@ -15,7 +15,7 @@ const Biodatas = () => {
     // pagination
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 6;
-    const totalItems = biodatas.length;
+    const [totalItems, setTotalItems] = useState(0);
     const numberOfPage = Math.ceil(totalItems / itemsPerPage);
     const pages = [...Array(numberOfPage).keys()];
 
@@ -46,6 +46,13 @@ const Biodatas = () => {
             });
     }, [axiosSecure]);
 
+    useEffect(() => {
+        axiosSecure.get('/usersCount')
+            .then(res => {
+                setTotalItems(res.data?.count);
+            });
+    }, [axiosSecure]);
+
     // Filter logic
     useEffect(() => {
         const result = biodatas.filter(b => {
@@ -60,7 +67,7 @@ const Biodatas = () => {
     return (
         <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto px-4 py-10">
             {/* Filter Panel */}
-            <div className="lg:w-1/4 w-full space-y-4 border rounded-lg p-4 shadow-sm h-fit">
+            <div className="lg:w-1/4 w-full space-y-4 border rounded-lg p-4 shadow-sm h-fit bg-base-300">
                 <h2 className="text-xl font-bold mb-2">Filter Biodatas</h2>
 
                 {/* Age Filter */}
@@ -93,9 +100,9 @@ const Biodatas = () => {
                         value={typeFilter}
                         onChange={(e) => setTypeFilter(e.target.value)}
                     >
-                        <option value="">All</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                        <option className='text-black' value="">All</option>
+                        <option className='text-black' value="Male">Male</option>
+                        <option className='text-black' value="Female">Female</option>
                     </select>
                 </div>
 
@@ -107,14 +114,14 @@ const Biodatas = () => {
                         value={divisionFilter}
                         onChange={(e) => setDivisionFilter(e.target.value)}
                     >
-                        <option value="">All</option>
-                        <option value="Dhaka">Dhaka</option>
-                        <option value="Chattagra">Chattagra</option>
-                        <option value="Rangpur">Rangpur</option>
-                        <option value="Barisal">Barisal</option>
-                        <option value="Khulna">Khulna</option>
-                        <option value="Mymensingh">Mymensingh</option>
-                        <option value="Sylhet">Sylhet</option>
+                        <option className='text-black' value="">All</option>
+                        <option className='text-black' value="Dhaka">Dhaka</option>
+                        <option className='text-black' value="Chattagra">Chattagra</option>
+                        <option className='text-black' value="Rangpur">Rangpur</option>
+                        <option className='text-black' value="Barisal">Barisal</option>
+                        <option className='text-black' value="Khulna">Khulna</option>
+                        <option className='text-black' value="Mymensingh">Mymensingh</option>
+                        <option className='text-black' value="Sylhet">Sylhet</option>
                     </select>
                 </div>
             </div>
@@ -123,7 +130,7 @@ const Biodatas = () => {
             <div className='lg:w-3/4'>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                     {filtered.map((biodata) => (
-                        <div key={biodata._id} className={`border rounded-lg shadow-sm p-4 space-y-2 ${biodata.Biodata_Id === 'admin' && 'hidden'}`}>
+                        <div key={biodata._id} className={`border bg-base-300 rounded-lg shadow-sm p-4 space-y-2 ${biodata.Biodata_Id === 'admin' && 'hidden'}`}>
                             <img
                                 src={biodata.photoUrl}
                                 alt={biodata.name}
@@ -148,7 +155,7 @@ const Biodatas = () => {
                 </div>
                 {/* pagination */}
 
-                <div className='pagination text-center'>
+                <div className='text-center'>
                 <p>{currentPage}</p>
                 <button
                 onClick={handlePrev}
@@ -156,7 +163,7 @@ const Biodatas = () => {
                 {
                     pages.map(page => <button
                         onClick={() => setCurrentPage(page)}
-                        className={`px-4 py-2 bg-gray-300 mr-2 rounded-lg cursor-pointer border ${currentPage===page && 'select'}`} 
+                        className={`bg-base-200 px-4 py-2 mr-2 border rounded-lg ${currentPage===page && 'select'}`} 
                         key={page}>{page}</button>)
                 }
                 <button

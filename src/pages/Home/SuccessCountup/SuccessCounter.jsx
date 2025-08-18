@@ -43,12 +43,12 @@ const SuccessCounter = () => {
         return <Loader></Loader>
     }
     return (
-        <div className="bg-gray-100 py-10 px-4">
+        <div className="bg-base-200 py-10 px-4 rounded-lg lg:rounded-2xl">
             <h2 className="text-3xl font-bold text-center mb-10">Our Success Stats</h2>
 
             <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
 
-                <div className="bg-white p-6 rounded-xl shadow-md">
+                <div className="bg-base-300 p-6 rounded-xl shadow-md">
                     <FaUsers className="text-indigo-500 text-4xl mx-auto mb-3" />
                     <h3 className="text-xl font-semibold mb-1">Total Biodatas</h3>
                     <p className="text-3xl font-bold text-indigo-500">
@@ -56,7 +56,7 @@ const SuccessCounter = () => {
                     </p>
                 </div>
 
-                <div className="bg-white p-6 rounded-xl shadow-md">
+                <div className="bg-base-300 p-6 rounded-xl shadow-md">
                     <FaUserTie className="text-blue-600 text-4xl mx-auto mb-3" />
                     <h3 className="text-xl font-semibold mb-1">Boys Biodata</h3>
                     <p className="text-3xl font-bold text-blue-600">
@@ -64,7 +64,7 @@ const SuccessCounter = () => {
                     </p>
                 </div>
 
-                <div className="bg-white p-6 rounded-xl shadow-md">
+                <div className="bg-base-300 p-6 rounded-xl shadow-md">
                     <FaUserNurse className="text-pink-500 text-4xl mx-auto mb-3" />
                     <h3 className="text-xl font-semibold mb-1">Girls Biodata</h3>
                     <p className="text-3xl font-bold text-pink-500">
@@ -72,7 +72,7 @@ const SuccessCounter = () => {
                     </p>
                 </div>
 
-                <div className="bg-white p-6 rounded-xl shadow-md">
+                <div className="bg-base-300 p-6 rounded-xl shadow-md">
                     <FaHeart className="text-red-500 text-4xl mx-auto mb-3" />
                     <h3 className="text-xl font-semibold mb-1">Marriages Completed</h3>
                     <p className="text-3xl font-bold text-red-500">

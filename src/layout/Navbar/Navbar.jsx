@@ -53,13 +53,13 @@ const Navbar = () => {
                 <NavLogo></NavLogo>
 
                 {/* Mobile Menu Button */}
-                <button className="md:hidden text-gray-700" onClick={() => setIsOpen(!isOpen)}>
+                <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
                     {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
                 </button>
 
                 {/* Desktop Nav */}
                 <div className="hidden md:flex items-center space-x-6">
-                    <ul className="flex items-center space-x-6 text-gray-600">
+                    <ul className="flex items-center space-x-6">
                         {links}
                     </ul>
 

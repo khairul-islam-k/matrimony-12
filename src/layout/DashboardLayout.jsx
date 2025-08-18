@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Outlet } from 'react-router';
 import { FiMenu } from 'react-icons/fi';
 import { IoClose } from 'react-icons/io5';
@@ -62,6 +62,11 @@ const DashboardLayout = () => {
 
 
   </>
+
+  useEffect(() => {
+    const localTheme = localStorage.getItem('theme');
+    document.querySelector('html').setAttribute("data-theme",localTheme);
+  },[])
 
   return (
     <div className="drawer lg:drawer-open">

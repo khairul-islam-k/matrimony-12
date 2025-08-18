@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet } from 'react-router';
 import registerLogo from "../assets/register.png";
 import Navbar from './Navbar/Navbar';
 
 const AuthLayout = () => {
+    useEffect(() => {
+            const localTheme = localStorage.getItem('theme');
+            document.querySelector('html').setAttribute('data-theme', localTheme);
+        },[])
     return (
         <div>
             <Navbar></Navbar>
-            <div className="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center px-6 bg-gray-50 gap-8">
+            <div className="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center px-6 bg-base-100 gap-8">
                 {/* Left: Form (on bottom in mobile, left in desktop) */}
                 <Outlet></Outlet>
                 {/* Right: Image (on top in mobile) */}

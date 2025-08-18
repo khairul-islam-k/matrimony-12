@@ -43,7 +43,7 @@ const RegistrationForm = () => {
     };
 
     return (
-        <div className="w-full md:w-1/2 max-w-md p-8 bg-white rounded shadow">
+        <div className="w-full md:w-1/2 max-w-md p-8 bg-base-300 rounded shadow">
             <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 {/* Name */}
