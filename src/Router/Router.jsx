@@ -29,6 +29,7 @@ import HomeDashboard from "../pages/dashboard/HomeDashboard/HomeDashboard";
 import SuccessStoryAdmin from "../pages/dashboard/Admin/SuccessStory/SuccessStoryAdmin";
 import Demo from "../pages/dashboard/Admin/Demo/Demo";
 import ManageAllBioData from "../pages/dashboard/Admin/ManageAllBioData/ManageAllBioData";
+import ManageStory from "../pages/dashboard/Admin/ManageStroy/ManageStory";
 
 
 export const router = createBrowserRouter([
@@ -139,6 +140,10 @@ export const router = createBrowserRouter([
       {
         path: 'manageAllBioData',
         element: <AdminRout><ManageAllBioData></ManageAllBioData></AdminRout>
+      },
+      {
+        path: 'manageStory',
+        element: <AdminRout><ManageStory></ManageStory></AdminRout>
       },
     ]
   },

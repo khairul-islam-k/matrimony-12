@@ -5,6 +5,7 @@ import useMyDetails from '../hooks/useMyDetails';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
 import { HiHome, HiUserCircle, HiClipboardList, HiStar, HiUserGroup, HiLogout, HiCheckCircle, HiHeart, HiDocumentAdd, HiUsers } from "react-icons/hi";
+import { BiBookContent } from "react-icons/bi";
 
 
 const DashboardLayout = () => {
@@ -29,7 +30,7 @@ const DashboardLayout = () => {
     <NavLogo></NavLogo>
     <li>
       <NavLink to="/dashboard" className="flex items-center gap-2">
-        <HiHome /> Home
+        <HiHome size={20} /> Home
       </NavLink>
     </li>
 
@@ -37,13 +38,13 @@ const DashboardLayout = () => {
       myBiodata ? (
         <li>
           <NavLink to="/dashboard/editBiodata" className="flex items-center gap-2">
-            <HiUserCircle /> Edit Biodata
+            <HiUserCircle size={20} /> Edit Biodata
           </NavLink>
         </li>
       ) : (
         <li>
           <NavLink to="/dashboard/createBiodata" className="flex items-center gap-2">
-            <HiUserCircle /> Create Biodata
+            <HiUserCircle size={20} /> Create Biodata
           </NavLink>
         </li>
       )
@@ -54,43 +55,54 @@ const DashboardLayout = () => {
         <>
           <li>
             <NavLink to="/dashboard/manage" className="flex items-center gap-2">
-              <HiUsers /> Manage User
+              <HiUsers size={20} /> Manage User
             </NavLink>
           </li>
 
           <li>
             <NavLink to="/dashboard/approvedPremium" className="flex items-center gap-2">
-              <HiCheckCircle /> Approved Premium
+              <HiCheckCircle size={20} /> Approved Premium
             </NavLink>
           </li>
 
           <li>
             <NavLink to="/dashboard/premiumApproval" className="flex items-center gap-2">
-              <HiClipboardList /> My Premium Approval
+              <HiClipboardList size={20} /> My Premium Approval
             </NavLink>
           </li>
 
           <li>
             <NavLink to="/dashboard/approvedContactRequest" className="flex items-center gap-2">
-              <HiCheckCircle /> Approved Contact Request
+              <HiCheckCircle size={20} /> Approved Contact Request
             </NavLink>
           </li>
 
           <li>
             <NavLink to="/dashboard/myContactApproval" className="flex items-center gap-2">
-              <HiClipboardList /> My Contact Approval
+              <HiClipboardList size={20} /> My Contact Approval
             </NavLink>
           </li>
 
           <li>
             <NavLink to="/dashboard/manageAllBioData" className="flex items-center gap-2">
-              <HiClipboardList /> Manage All BioData
+              <HiClipboardList size={20} /> Manage All BioData
             </NavLink>
           </li>
 
           <li>
+            <NavLink
+              to="/dashboard/manageStory"
+              className="flex items-center gap-2"
+            >
+              <BiBookContent size={20} />
+              <span>Manage Story</span>
+            </NavLink>
+          </li>
+
+
+          <li>
             <NavLink to="/dashboard/successStory" className="flex items-center gap-2">
-              <HiStar /> Success Story
+              <HiStar size={20} /> Success Story
             </NavLink>
           </li>
         </>
