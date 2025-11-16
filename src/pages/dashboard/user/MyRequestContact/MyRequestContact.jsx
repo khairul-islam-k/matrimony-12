@@ -52,7 +52,7 @@ const MyRequestContact = () => {
     }
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="max-w-6xl px-4 py-8">
   <h2 className="text-2xl font-bold mb-6 text-center">My Contact Requests</h2>
 
   <div className="overflow-auto">

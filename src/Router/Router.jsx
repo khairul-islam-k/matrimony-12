@@ -28,6 +28,7 @@ import ContactUs from "../pages/ContactUs/ContactUs";
 import HomeDashboard from "../pages/dashboard/HomeDashboard/HomeDashboard";
 import SuccessStoryAdmin from "../pages/dashboard/Admin/SuccessStory/SuccessStoryAdmin";
 import Demo from "../pages/dashboard/Admin/Demo/Demo";
+import ManageAllBioData from "../pages/dashboard/Admin/ManageAllBioData/ManageAllBioData";
 
 
 export const router = createBrowserRouter([
@@ -134,6 +135,10 @@ export const router = createBrowserRouter([
       {
         path: 'successStory',
         element: <AdminRout><SuccessStoryAdmin></SuccessStoryAdmin></AdminRout>
+      },
+      {
+        path: 'manageAllBioData',
+        element: <AdminRout><ManageAllBioData></ManageAllBioData></AdminRout>
       },
     ]
   },

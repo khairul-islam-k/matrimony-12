@@ -21,13 +21,13 @@ const PremiumMembers = () => {
   if (isError) return <div className="text-center py-10 text-red-600">Failed to load members</div>;
 
   return (
-    <section className="py-10 bg-base-200 my-10 rounded-lg lg:rounded-2xl">
+    <section className="py-10 my-10 rounded-lg lg:rounded-2xl">
       <div className="mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8 text-blue-600">Premium Members</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:w-3/4 lg:mx-auto">
           {members.map((member) => (
-            <div key={member._id} className={`border rounded-lg shadow-sm p-4 space-y-2 ${member.Biodata_Id === 'admin' && 'hidden'}`}>
+            <div key={member._id} className={`border rounded-lg shadow-sm p-4 space-y-2 ${member.Biodata_Id === 'admin' && 'hidden'} bg-base-200`}>
                             <img
                                 src={member.photoUrl}
                                 alt={member.name}
