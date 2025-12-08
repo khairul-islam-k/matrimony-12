@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router";
 import Loader from "../../Shared/Loader/Loader";
+import "../../Shared/BorderAnimate/BorderAnimate.css";
 
 const PremiumMembers = () => {
   const axiosSecure = useAxiosSecure();
@@ -25,26 +26,30 @@ const PremiumMembers = () => {
       <div className="mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8 text-blue-600">Premium Members</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:w-3/4 lg:mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:w-[920px] lg:mx-auto">
           {members.map((member) => (
-            <div key={member._id} className={`border rounded-lg shadow-sm p-4 space-y-2 ${member.Biodata_Id === 'admin' && 'hidden'} bg-base-200`}>
-                            <img
-                                src={member.photoUrl}
-                                alt={member.name}
-                                className="w-full h-[200px] lg:h-1/2 object-cover rounded"
-                            />
-                            <h3 className="text-lg font-semibold">{member.name}</h3>
-                            <p><strong>Biodata ID:</strong> {member.Biodata_Id}</p>
-                            <p><strong>Type:</strong> {member.biodataType}</p>
-                            <p><strong>Division:</strong> {member.permanentDivision}</p>
-                            <p><strong>Age:</strong> {member.age}</p>
-                            <p><strong>Occupation:</strong> {member.occupation}</p>
-                            <Link to={`/biodata/${member._id}`}>
-                                <button className="mt-2 px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 cursor-pointer">
-                                    View Profile
-                                </button>
-                            </Link>
-                        </div>
+            <div key={member._id} className='box mx-auto'>
+
+              <div className={`innerBox rounded-lg shadow-black p-4 space-y-2 ${member.Biodata_Id === 'admin' && 'hidden'} bg-base-200 w-[280px] h-[380px]`}>
+                <img
+                  src={member.photoUrl}
+                  alt={member.name}
+                  className="w-[300px] h-[200px] mx-auto object-cover rounded"
+                />
+                <h3 className="text-lg font-semibold">{member.name}</h3>
+                <p><strong>Biodata ID:</strong> {member.Biodata_Id}</p>
+                <p><strong>Type:</strong> {member.biodataType}</p>
+                
+                <Link to={`/biodata/${member._id}`}>
+                  <button className="mt-2 px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 cursor-pointer">
+                    View Profile
+                  </button>
+                </Link>
+              </div>
+
+            </div>
+
+
           ))}
         </div>
       </div>

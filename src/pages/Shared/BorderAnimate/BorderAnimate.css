@@ -1,0 +1,36 @@
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.box {
+    width: 285px;
+    height: 385px;
+    background-image: conic-gradient(from var(--angle),transparent 40%, #ff00bf,#1105FF);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: 10s spin linear infinite;
+}
+
+.box:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.innerBox:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: transform 2s 0.5s;
+}
+
+@keyframes spin {
+    from {
+        --angle : 0deg;
+    }
+    to {
+        --angle : 360deg;
+    }
+}

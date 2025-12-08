@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { Link } from 'react-router';
 import './Biodatas.css'
+import '../Shared/BorderAnimate/BorderAnimate.css';
 
 const Biodatas = () => {
     const axiosSecure = useAxiosSecure();
@@ -27,16 +28,16 @@ const Biodatas = () => {
     }
 
     const handleNext = () => {
-        if (currentPage < pages.length -1) {
+        if (currentPage < pages.length - 1) {
             setCurrentPage(currentPage + 1);
         }
     }
 
     useEffect(() => {
         axiosSecure.get(`/users?page=${currentPage}&size=${itemsPerPage}`)
-        .then(res => setFiltered(res.data))
-        .catch(error => console.log(error))
-    },[axiosSecure,currentPage,itemsPerPage])
+            .then(res => setFiltered(res.data))
+            .catch(error => console.log(error))
+    }, [axiosSecure, currentPage, itemsPerPage])
 
     // Fetch all biodatas
     useEffect(() => {
@@ -130,23 +131,22 @@ const Biodatas = () => {
             <div className='lg:w-3/4'>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                     {filtered.map((biodata) => (
-                        <div key={biodata._id} className={`border bg-base-300 rounded-lg shadow-sm p-4 space-y-2 ${biodata.Biodata_Id === 'admin' && 'hidden'}`}>
-                            <img
-                                src={biodata.photoUrl}
-                                alt={biodata.name}
-                                className="w-full h-48 object-cover rounded"
-                            />
-                            <h3 className="text-lg font-semibold">{biodata.name}</h3>
-                            <p><strong>Biodata ID:</strong> {biodata.Biodata_Id}</p>
-                            <p><strong>Type:</strong> {biodata.biodataType}</p>
-                            <p><strong>Division:</strong> {biodata.permanentDivision}</p>
-                            <p><strong>Age:</strong> {biodata.age}</p>
-                            <p><strong>Occupation:</strong> {biodata.occupation}</p>
-                            <Link to={`/biodata/${biodata._id}`}>
-                                <button className="mt-2 px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 cursor-pointer">
-                                    View Profile
-                                </button>
-                            </Link>
+                        <div key={biodata._id} className={`box mx-auto ${biodata.Biodata_Id === 'admin' && 'hidden'}`}>
+                            <div className={`innerBox bg-base-300 rounded-lg shadow-sm p-4 space-y-2 h-[380px] w-[280px] `}>
+                                <img
+                                    src={biodata.photoUrl}
+                                    alt={biodata.name}
+                                    className="w-full h-48 object-cover rounded"
+                                />
+                                <h3 className="text-lg font-semibold">{biodata.name}</h3>
+                                <p><strong>Biodata ID:</strong> {biodata.Biodata_Id}</p>
+                                <p><strong>Type:</strong> {biodata.biodataType}</p>
+                                <Link to={`/biodata/${biodata._id}`}>
+                                    <button className="mt-2 px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 cursor-pointer">
+                                        View Profile
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
                     ))}
                     {filtered.length === 0 && (
@@ -156,22 +156,22 @@ const Biodatas = () => {
                 {/* pagination */}
 
                 <div className='text-center'>
-                <p>{currentPage}</p>
-                <button
-                onClick={handlePrev}
-                className='border px-4 py-2 rounded-lg mr-2 cursor-pointer'>prev</button>
-                {
-                    pages.map(page => <button
-                        onClick={() => setCurrentPage(page)}
-                        className={`bg-base-200 px-4 py-2 mr-2 border rounded-lg ${currentPage===page && 'select'}`} 
-                        key={page}>{page}</button>)
-                }
-                <button
-                onClick={handleNext}
-                className='border px-4 py-2 rounded-lg cursor-pointer'>Next</button>
+                    <p>{currentPage}</p>
+                    <button
+                        onClick={handlePrev}
+                        className='border px-4 py-2 rounded-lg mr-2 cursor-pointer'>prev</button>
+                    {
+                        pages.map(page => <button
+                            onClick={() => setCurrentPage(page)}
+                            className={`bg-base-200 px-4 py-2 mr-2 border rounded-lg ${currentPage === page && 'select'}`}
+                            key={page}>{page}</button>)
+                    }
+                    <button
+                        onClick={handleNext}
+                        className='border px-4 py-2 rounded-lg cursor-pointer'>Next</button>
 
-                
-            </div>
+
+                </div>
 
             </div>
 
