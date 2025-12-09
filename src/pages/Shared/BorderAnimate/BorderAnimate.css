@@ -15,16 +15,7 @@
     animation: 10s spin linear infinite;
 }
 
-.box:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
 
-.innerBox:hover {
-    cursor: pointer;
-    transform: scale(1.01);
-    transition: transform 2s 0.5s;
-}
 
 @keyframes spin {
     from {

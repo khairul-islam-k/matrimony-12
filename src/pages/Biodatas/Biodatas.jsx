@@ -3,6 +3,9 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { Link } from 'react-router';
 import './Biodatas.css'
 import '../Shared/BorderAnimate/BorderAnimate.css';
+import { motion } from "motion/react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Biodatas = () => {
     const axiosSecure = useAxiosSecure();
@@ -64,6 +67,13 @@ const Biodatas = () => {
         });
         setFiltered(result);
     }, [ageRange, typeFilter, divisionFilter, biodatas]);
+
+    useEffect(() => {
+        AOS.init({
+          duration: 800, // animation duration
+          once: true,    // run animation only once
+        });
+      }, []);
 
     return (
         <div className="flex flex-col lg:flex-row gap-6 max-w-7xl mx-auto px-4 pb-10 pt-25">
@@ -131,8 +141,12 @@ const Biodatas = () => {
             <div className='lg:w-3/4'>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                     {filtered.map((biodata) => (
-                        <div key={biodata._id} className={`box mx-auto ${biodata.Biodata_Id === 'admin' && 'hidden'}`}>
-                            <div className={`innerBox bg-base-300 rounded-lg shadow-sm p-4 space-y-2 h-[380px] w-[280px] `}>
+                        <motion.div
+                            data-aos="zoom-out"
+                            whileHover={{ scale: 1.08 }}
+                            whileTap={{ scale: 0.95 }}
+                            key={biodata._id} className={`box mx-auto ${biodata.Biodata_Id === 'admin' && 'hidden'}`}>
+                            <div className={`bg-base-300 rounded-lg shadow-sm p-4 space-y-2 h-[380px] w-[280px] `}>
                                 <img
                                     src={biodata.photoUrl}
                                     alt={biodata.name}
@@ -147,7 +161,7 @@ const Biodatas = () => {
                                     </button>
                                 </Link>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                     {filtered.length === 0 && (
                         <p className="text-gray-500 col-span-full text-center">No biodatas found with selected filters.</p>

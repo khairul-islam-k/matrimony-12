@@ -37,7 +37,7 @@ const renderStars = (rating) => {
 const SuccessStoryCarousel = () => {
     const axiosSecure = useAxiosSecure();
 
-    const { data: successStories=[], isLoading } = useQuery({
+    const { data: successStories = [], isLoading } = useQuery({
         queryKey: ['story'],
         queryFn: async () => {
             const res = await axiosSecure.get('/gotMarried');
@@ -53,6 +53,7 @@ const SuccessStoryCarousel = () => {
         <div className="my-10 px-4 md:px-10">
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">Success Stories</h2>
             <Swiper
+                data-aos="zoom-out"
                 modules={[Navigation, Pagination]}
                 slidesPerView={1}
                 spaceBetween={20}
