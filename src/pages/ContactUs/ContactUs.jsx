@@ -11,6 +11,7 @@ const ContactUs = () => {
             icon: "success",
             draggable: true
         });
+        e.target.reset();
     }
 
     useEffect(() => {

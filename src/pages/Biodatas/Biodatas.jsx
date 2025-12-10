@@ -37,7 +37,7 @@ const Biodatas = () => {
     }
 
     useEffect(() => {
-        axiosSecure.get(`/users?page=${currentPage}&size=${itemsPerPage}`)
+        axiosSecure.get(`/user6?page=${currentPage}&size=${itemsPerPage}`)
             .then(res => setFiltered(res.data))
             .catch(error => console.log(error))
     }, [axiosSecure, currentPage, itemsPerPage])
@@ -59,13 +59,17 @@ const Biodatas = () => {
 
     // Filter logic
     useEffect(() => {
-        const result = biodatas.filter(b => {
+        if (ageRange[0] !== 18 || ageRange[1] !== 40 || typeFilter || divisionFilter) {
+            const result = biodatas.filter(b => {
             const ageMatch = +b.age >= ageRange[0] && +b.age <= ageRange[1];
             const typeMatch = typeFilter ? b.biodataType === typeFilter : true;
             const divisionMatch = divisionFilter ? b.permanentDivision === divisionFilter : true;
             return ageMatch && typeMatch && divisionMatch;
         });
         setFiltered(result);
+        
+        }
+        
     }, [ageRange, typeFilter, divisionFilter, biodatas]);
 
     useEffect(() => {
