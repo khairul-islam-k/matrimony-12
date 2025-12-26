@@ -25,7 +25,7 @@ const CreateBiodata = () => {
   //image upload
   const handleImageUpload = async (e) => {
     const image = e.target.files[0]
-    //console.log(e.target.files[0]);
+ 
     const formData = new FormData();
     formData.append('image', image);
 
@@ -56,8 +56,10 @@ const CreateBiodata = () => {
     };
 
     try {
-      const result = await postBiodata(biodata);
 
+
+      if (photoUrl) {
+        const result = await postBiodata(biodata);
 
       navigate('/dashboard')
       Swal.fire({
@@ -68,8 +70,9 @@ const CreateBiodata = () => {
         timer: 1500
       });
 
-      // Optionally reset the form
        reset();
+      }
+      
 
     } catch (err) {
       console.error(err);

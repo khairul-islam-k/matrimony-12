@@ -15,7 +15,7 @@ const EditBiodata = () => {
     const navigate = useNavigate();
     const { myBiodata, isLoading } = useMyDetails();
 
-    //console.log(myBiodata);
+    
     //photo validation
     useEffect(() => {
         if (!photoUrl) {
@@ -33,8 +33,7 @@ const EditBiodata = () => {
 
     //image upload
     const handleImageUpload = async (e) => {
-        const image = e.target.files[0]
-        //console.log(e.target.files[0]);
+        const image = e.target.files[0];
         const formData = new FormData();
         formData.append('image', image);
 

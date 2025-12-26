@@ -18,6 +18,7 @@ const ManageUser = () => {
         },
     });
 
+
     // Promote to admin
     const makeAdmin = useMutation({
         mutationFn: (id) => axiosSecure.patch(`/users/admin/${id}`),
@@ -95,7 +96,7 @@ const ManageUser = () => {
                                         )}
                                     </td>
                                     <td className="p-3 border text-center">
-                                        {user.role === 'premium' ? (
+                                        {user.Biodata_Id === 'premium' ? (
                                             <span className="text-yellow-600 font-semibold">Premium</span>
                                         ) : (
                                             <button
@@ -128,7 +129,7 @@ const ManageUser = () => {
                                             )}
                                         </td>
                                         <td className="p-3 border text-center">
-                                            {user.role === 'premium' ? (
+                                            {user.Biodata_Id === 'premium' ? (
                                                 <span className="text-yellow-600 font-semibold">Premium</span>
                                             ) : (
                                                 <button
