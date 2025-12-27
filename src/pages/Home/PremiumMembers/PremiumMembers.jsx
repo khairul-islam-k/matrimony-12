@@ -22,9 +22,9 @@ const PremiumMembers = () => {
 
   useEffect(() => {
     AOS.init({
-      duration: 800, // animation duration
-      once: true,    // run animation only once
-    });
+        duration: 800, // animation duration
+        once: false,
+    })
   }, []);
 
   if (isLoading) {

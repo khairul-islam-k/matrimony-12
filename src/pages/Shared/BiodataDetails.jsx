@@ -63,7 +63,7 @@ const BiodataDetails = () => {
 
 
     return (
-        <div className="max-w-4xl mx-auto px-4 py-10">
+        <div className="max-w-4xl mx-auto px-4 py-16">
             {/* Full Image */}
             <img
                 src={biodata.photoUrl}

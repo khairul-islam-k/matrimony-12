@@ -10,6 +10,7 @@ import axios from 'axios';
 import Loader from '../../Shared/Loader/Loader';
 
 const EditBiodata = () => {
+    const [loading, setLoading] = useState(false);
     const [photoUrl, setPhotoUrl] = useState('');
     const { user } = useAuth();
     const navigate = useNavigate();
@@ -33,6 +34,7 @@ const EditBiodata = () => {
 
     //image upload
     const handleImageUpload = async (e) => {
+        setLoading(true);
         const image = e.target.files[0];
         const formData = new FormData();
         formData.append('image', image);
@@ -43,6 +45,9 @@ const EditBiodata = () => {
 
         const photo = res.data.data.url;
         setPhotoUrl(photo);
+        if (photo) {
+            setLoading(false);
+        }
 
     }
 
@@ -338,8 +343,12 @@ const EditBiodata = () => {
                 <div className="md:col-span-2">
                     <button
                         type="submit"
+                        disabled={loading}
                         className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition cursor-pointer"
                     >
+                        {
+                            loading && <span className="loading loading-spinner loading-xs"></span>
+                        }
                         Submit Biodata
                     </button>
                 </div>

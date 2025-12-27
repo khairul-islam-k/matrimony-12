@@ -8,8 +8,9 @@ import useAuth from "../../../hooks/useAuth";
 import { useNavigate } from "react-router";
 
 const CreateBiodata = () => {
+  const [loading, setLoading] = useState(false);
   const [photoUrl, setPhotoUrl] = useState('');
-  const {user} = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
 
 
@@ -24,8 +25,9 @@ const CreateBiodata = () => {
 
   //image upload
   const handleImageUpload = async (e) => {
+    setLoading(true);
     const image = e.target.files[0]
- 
+
     const formData = new FormData();
     formData.append('image', image);
 
@@ -35,6 +37,9 @@ const CreateBiodata = () => {
 
     const photo = res.data.data.url;
     setPhotoUrl(photo);
+    if (photo) {
+      setLoading(false);
+    }
 
   }
 
@@ -57,22 +62,19 @@ const CreateBiodata = () => {
 
     try {
 
-
-      if (photoUrl) {
         const result = await postBiodata(biodata);
 
-      navigate('/dashboard')
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Biodata has been submitted.",
-        showConfirmButton: false,
-        timer: 1500
-      });
+        navigate('/dashboard')
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Biodata has been submitted.",
+          showConfirmButton: false,
+          timer: 1500
+        });
 
-       reset();
-      }
-      
+        reset();
+
 
     } catch (err) {
       console.error(err);
@@ -300,8 +302,12 @@ const CreateBiodata = () => {
         <div className="md:col-span-2">
           <button
             type="submit"
+            disabled={loading}
             className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition cursor-pointer"
           >
+            {
+              loading && <span className="loading loading-spinner loading-xs"></span>
+            }
             Submit Biodata
           </button>
         </div>

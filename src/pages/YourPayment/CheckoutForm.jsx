@@ -1,12 +1,13 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useState } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import useMyDetails from '../../hooks/useMyDetails';
 import Loader from '../Shared/Loader/Loader';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 
 const CheckoutForm = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const { myBiodata, isLoading } = useMyDetails();
   const stripe = useStripe();
@@ -79,6 +80,7 @@ const CheckoutForm = () => {
         showConfirmButton: false,
         timer: 1500
       });
+      navigate("/");
     }
 
   }

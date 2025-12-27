@@ -87,3 +87,9 @@
   --depth: 1;
   --noise: 0;
 }
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
